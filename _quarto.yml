@@ -1,4 +1,3 @@
-# Stark Protocol - AI Usage Course
 project:
   type: book
   output-dir: docs
@@ -6,17 +5,31 @@ project:
 book:
   title: "Stark Protocol"
   author: "Diego Saavedra"
-  site-url: "https://statick88.github.io/curso-stark-protocol/"
-  favicon: images/stark-protocol.png
-  downloads: [pdf]
-  sidebar:
-    style: docked
+  output-file: "stark-protocol"  
+  date: today
+  date-format: medium
+  favicon: images/stark.png
+  description: Uso Efectivo de Inteligencia Artificial
+  keyword: AI, ChatGPT, Prompt Engineering
+  url: https://github.com/statick88/curso-stark-protocol
+  page-navigation: true
+  sidebar: 
+    logo: images/stark.png
     search: true
+    collapse-level: 1
+
+  repo-subdir: book
+  sharing: [twitter, linkedin]
+  downloads: [pdf]
+  image: images/stark.png
+
   page-footer:
-    left: |
-      Stark Protocol por Diego Saavedra
-    right: |
-      [Acerca de](about.qmd) | [Licencia](license.qmd)
+    center: 
+      - text: "About"
+        href: about.qmd
+      - text: "License"
+        href: license.qmd
+        
   chapters:
     - index.qmd
     - part: "Contenido Teórico"
@@ -48,16 +61,29 @@ book:
         - about.qmd
         - license.qmd
 
+bibliography: references.bib
+biblio-style: "apalike"
+
 format:
   html:
-    theme:
-      - solar
-      - custom.scss
-    css:
-      - css/styles.css
-      - custom.css
-  pdf:
-    documentclass: scrbook
+    theme: solar
+    number-sections: true
+    number-depth: 4
+    link-external-icon: true
+    link-external-newwindow: true
+    css: css/styles.css
 
-execute:
-  echo: false
+  pdf:
+    documentclass: scrreprt
+    classoption: ["onepage", "openany"]
+    papersize: a4
+    toc: true
+    margin-top: 35mm
+    margin-left: 30mm
+    margin-bottom: 30mm
+    margin-right: 30mm
+    titlepage-geometry: 
+      - top=35mm
+      - bottom=30mm
+      - right=30mm
+      - left=30mm
