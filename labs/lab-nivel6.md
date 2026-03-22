@@ -255,4 +255,4 @@ El resto es práctica.
 
 - [AI Collaboration Framework](https://arxiv.org/abs/2304.10177)
 - [Human-AI Teams](https://hai.stanford.edu/research/human-ai-teams)
-- [Stark Protocol - Curso Completo](https://statick88.github.io/curso-stark-protocol/)
+- [Iron Man Evolution - Curso Completo](https://statick88.github.io/iron-man-evolution/)

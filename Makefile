@@ -1,4 +1,4 @@
-# Stark Protocol - Makefile
+# Iron Man Evolution - Makefile
 
 .PHONY: all render preview pdf clean serve deploy
 
@@ -30,7 +30,7 @@ serve:
 deploy: render
 	cd docs && git init && git add . && git commit -m "Deploy: $(shell date +%Y-%m-%d)"
 	cd docs && git branch -M gh-pages
-	cd docs && git remote add origin https://github.com/statick88/curso-stark-protocol.git || true
+	cd docs && git remote add origin https://github.com/statick88/iron-man-evolution.git || true
 	cd docs && git push -u origin gh-pages --force
 
 # Check for issues
@@ -43,7 +43,7 @@ install:
 
 # Help
 help:
-	@echo "Stark Protocol - Available targets:"
+	@echo "Iron Man Evolution - Available targets:"
 	@echo "  make render   - Render the book to HTML"
 	@echo "  make preview  - Preview with live reload"
 	@echo "  make pdf      - Generate PDF version"
