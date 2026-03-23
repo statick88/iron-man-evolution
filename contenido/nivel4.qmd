@@ -448,11 +448,8 @@ Como Tony tiene un inventario de armas para cada situación, el Skill Registry e
 **Campos clave:**
 
 - **path**: Ruta al archivo SKILL.md
-
 - **version**: Versión de la habilidad
-
 - **trigger**: Palabras que activan esta habilidad
-
 - **priority**: Orden de carga (1 = primero)
 
 ---
