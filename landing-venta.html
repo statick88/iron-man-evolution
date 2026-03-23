@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo con IA: De 0 a Producción | ISCD</title>
+    <meta name="description" content="Curso profesionales de desarrollo con IA. Aprende a construir agentes, implementar SDD y llevar tu código a producción con AI-First IDEs.">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #1a2332;
+            --accent-cyan: #00d4ff;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #2d3748;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 14, 23, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-primary);
+        }
+
+        .logo-code {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            background: 
+                radial-gradient(ellipse at 50% 0%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+                var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 50%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-cyan);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+
+        .problem-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .problem-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Course Section */
+        .course {
+            padding: 100px 0;
+            background: var(--bg-primary);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .day-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 40px 30px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .day-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+
+        .day-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(0, 212, 255, 0.1);
+        }
+
+        .day-badge {
+            display: inline-block;
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .day-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .day-card p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .day-topics {
+            list-style: none;
+        }
+
+        .day-topics li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .day-topics li::before {
+            content: '>';
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .curriculum-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .curriculum-day {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .curriculum-header {
+            background: rgba(0, 212, 255, 0.05);
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .curriculum-header:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .curriculum-header h3 {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .day-tag {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .curriculum-content {
+            padding: 30px;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .topic-icon {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .topic-item h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .topic-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Differentiators Section */
+        .differentiators {
+            padding: 100px 0;
+            background: var(--bg-primary);
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .diff-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diff-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+        }
+
+        .diff-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
+
+        .diff-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .diff-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .diff-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .diff-badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--accent-purple);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+        }
+
+        /* Instructors Section */
+        .instructors {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .instructor-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .instructor-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--bg-primary);
+            font-weight: bold;
+        }
+
+        .instructor-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .instructor-title {
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .instructor-bio {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .instructor-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .instructor-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .instructor-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--bg-primary);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .testimonial-quote {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--accent-cyan);
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+
+        .testimonial-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Info Section */
+        .info {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .info-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-item {
+            padding: 20px;
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .info-item h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: 
+                radial-gradient(ellipse at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                var(--bg-primary);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--success);
+            color: var(--bg-primary);
+            padding: 20px 40px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
+        }
+
+        .whatsapp-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .instructor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-stats {
+                gap: 30px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .day-card {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 100px 15px 60px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .badge {
+                font-size: 0.75rem;
+                padding: 6px 15px;
+            }
+
+            .btn {
+                padding: 14px 24px;
+                font-size: 0.9rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn-secondary {
+                order: -1;
+            }
+        }
+
+        /* Code decoration */
+        .code-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-keyword { color: var(--accent-purple); }
+        .code-string { color: var(--success); }
+        .code-function { color: var(--accent-cyan); }
+        .code-comment { color: var(--text-muted); }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-cyan);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <span class="logo-code"><ISCD/></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#problema">Problema</a></li>
+                <li><a href="#curso">El Curso</a></li>
+                <li><a href="#temario">Temario</a></li>
+                <li><a href="#diferenciadores">Diferenciadores</a></li>
+                <li><a href="#instructores">Instructores</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="badge">🎯 3 Jornads Online por Zoom</span>
+            <h1>Desarrollo con IA:<br>De 0 a Producción</h1>
+            <p class="hero-subtitle">
+                Domina la ingeniería de prompts, construye agentes autonomous y lleva tu código 
+                a producción con los mismos estándares de las Big Techs.
+            </p>
+            <div class="hero-cta">
+                <a href="https://wa.me/593996812371" class="btn btn-primary">
+                    <span class="whatsapp-icon">💬</span>
+                    Reservar mi Lugar
+                </a>
+                <a href="#curso" class="btn btn-secondary">
+                    Ver Temario
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Prompts Categorizados</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Labs Prácticos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Días Intensivos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problema" class="problem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">El Problema</h2>
+                <p class="section-subtitle">
+                    Los desarrolladores today pierden hours preguntando a ChatGPT y get generic results. 
+                    No know how to leverage AI para construir software robusto.
+                </p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">🚫</div>
+                    <h3>Prompts Poorly Written</h3>
+                    <p>Sin ingeniería de prompts efectiva, los modelos no aprovechan todo su potential.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⚡</div>
+                    <h3>No Agent Architecture</h3>
+                    <p>Usan IA como simple chatbot, sin construir agentes autonomous que ejecuten tareas.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🎯</div>
+                    <h3>No Production Standards</h3>
+                    <p>Falta de TDD, CI/CD y code review con IA. El código no escala a producción.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Overview Section -->
+    <section id="curso" class="course">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">El Curso</h2>
+                <p class="section-subtitle">
+                    3 jornadas online que transforman tu forma de desarrollar software con IA.
+                </p>
+            </div>
+            <div class="course-grid">
+                <div class="day-card">
+                    <span class="day-number">01</span>
+                    <span class="day-badge">Día 1</span>
+                    <h3>Fundamentos</h3>
+                    <p>Domina los cimientos: desde LLMs hasta Spec-Driven Development.</p>
+                    <ul class="day-topics">
+                        <li>Cómo funcionan los LLMs</li>
+                        <li>Ingeniería de prompts avanzada</li>
+                        <li>SDD - Spec-Driven Development</li>
+                        <li>PRD - Product Requirements</li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <span class="day-number">02</span>
+                    <span class="day-badge">Día 2</span>
+                    <h3>Agentes</h3>
+                    <p>Construye sistemas multi-agente con memoria persistente.</p>
+                    <ul class="day-topics">
+                        <li>AI-First IDEs</li>
+                        <li>Engram Cloud (memoria persistente)</li>
+                        <li>Arquitectura Multi-Agente</li>
+                        <li>Human in the Loop</li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <span class="day-number">03</span>
+                    <span class="day-badge">día 3</span>
+                    <h3>Producción</h3>
+                    <p>Lleva tu código a producción con estándares de calidad enterprise.</p>
+                    <ul class="day-topics">
+                        <li>TDD con IA</li>
+                        <li>CI/CD automatizado</li>
+                        <li>Code Review asistido</li>
+                        <li>Deployment y monitoreo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section id="temario" class="curriculum">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Temario Detallado</h2>
+                <p class="section-subtitle">
+                    Cada día tiene focus definido para que domines cada aspecto del desarrollo con IA.
+                </p>
+            </div>
+            <div class="curriculum-grid">
+                <!-- Día 1 -->
+                <div class="curriculum-day">
+                    <div class="curriculum-header">
+                        <h3><span class="day-tag">DÍA 1</span> Fundamentos de AI Development</h3>
+                    </div>
+                    <div class="curriculum-content">
+                        <div class="topic-grid">
+                            <div class="topic-item">
+                                <div class="topic-icon">🧠</div>
+                                <div>
+                                    <h4>LLM Architecture</h4>
+                                    <p>Tokenizers, embeddings, attention mechanisms</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">🎯</div>
+                                <div>
+                                    <h4>Prompt Engineering</h4>
+                                    <p>Chain of Thought, Few-Shot, Role prompting</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">📋</div>
+                                <div>
+                                    <h4>SDD Methodology</h4>
+                                    <p>Spec-Driven Development aliran development</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">📝</div>
+                                <div>
+                                    <h4>PRD Creation</h4>
+                                    <p>Product Requirements Documents efectivos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Día 2 -->
+                <div class="curriculum-day">
+                    <div class="curriculum-header">
+                        <h3><span class="day-tag">DÍA 2</span> Building AI Agents</h3>
+                    </div>
+                    <div class="curriculum-content">
+                        <div class="topic-grid">
+                            <div class="topic-item">
+                                <div class="topic-icon">💻</div>
+                                <div>
+                                    <h4>AI-First IDEs</h4>
+                                    <p>Cursor, Windsurf, herramientas de código AI</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">🗄️</div>
+                                <div>
+                                    <h4>Engram Cloud</h4>
+                                    <p>Memoria persistente para agentes</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">🤖</div>
+                                <div>
+                                    <h4>Multi-Agent Systems</h4>
+                                    <p>Arquitecturas de agentes colaborativos</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">👤</div>
+                                <div>
+                                    <h4>Human in the Loop</h4>
+                                    <p>Validación humana en loops de IA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Día 3 -->
+                <div class="curriculum-day">
+                    <div class="curriculum-header">
+                        <h3><span class="day-tag">DÍA 3</span> AI in Production</h3>
+                    </div>
+                    <div class="curriculum-content">
+                        <div class="topic-grid">
+                            <div class="topic-item">
+                                <div class="topic-icon">🧪</div>
+                                <div>
+                                    <h4>TDD con IA</h4>
+                                    <p>Test-Driven Development asistido por AI</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">⚙️</div>
+                                <div>
+                                    <h4>CI/CD Pipelines</h4>
+                                    <p>Automatización de build y deploy</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">🔍</div>
+                                <div>
+                                    <h4>AI Code Review</h4>
+                                    <p>Automated code quality assurance</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">🚀</div>
+                                <div>
+                                    <h4>Deployment</h4>
+                                    <p>Deploy de agentes a producción</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentiators Section -->
+    <section id="diferenciadores" class="differentiators">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Diferenciadores Únicos</h2>
+                <p class="section-subtitle">
+                    Lo que hace a este curso diferente de cualquier otro en el mercado.
+                </p>
+            </div>
+            <div class="diff-grid">
+                <div class="diff-card">
+                    <div class="diff-badge">⭐ EXCLUSIVO</div>
+                    <div class="diff-icon">🗄️</div>
+                    <h3>Engram Cloud</h3>
+                    <p>Aprende a implementar memoria persistente para agentes IA que recuerdan conversaciones across sessions.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-badge">📐 METODOLOGÍA</div>
+                    <div class="diff-icon">📋</div>
+                    <h3>SDD + PRD</h3>
+                    <p>Spec-Driven Development + Product Requirements Documents. La misma metodología que usan las Big Techs.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-badge">🔄 PROCESO</div>
+                    <div class="diff-icon">👤</div>
+                    <h3>Human in the Loop</h3>
+                    <p>Arquitecturas donde la IA interactúa con humanos para validaciones críticas before proceeding.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-badge">📚 RECURSO</div>
+                    <div class="diff-icon">💬</div>
+                    <h3>200 Prompts</h3>
+                    <p>Pack completo de prompts categorizados lista para usar en tus proyectos reales.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-badge">🛠️ PRÁCTICA</div>
+                    <div class="diff-icon">🔨</div>
+                    <h3>Labs Prácticos</h3>
+                    <p>Cada módulo tiene labs hands-on que debes completar. No solo miras, constrúyes.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-badge">🎓 CERTIFICACIÓN</div>
+                    <div class="diff-icon">🏆</div>
+                    <h3>Certificado ISCD</h3>
+                    <p>Certificado profesional reconocido en la industria Cybersecurity y Development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section id="instructores" class="instructors">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Instructores</h2>
+                <p class="section-subtitle">
+                    Learn from industry experts con años de experiencia en AI y software development.
+                </p>
+            </div>
+            <div class="instructor-grid">
+                <div class="instructor-card">
+                    <div class="instructor-avatar">DS</div>
+                    <h3>Diego Saavedra</h3>
+                    <p class="instructor-title">Lead Instructor</p>
+                    <p class="instructor-bio">
+                        FullStack Developer, Ethical Hacking Professor, y Machine Learning practitioner. 
+                        Creador de metodologías como SDD y experto en AI-First Development.
+                    </p>
+                    <div class="instructor-links">
+                        <a href="https://youtube.com/@ISCDcanal" target="_blank">@ISCDcanal</a>
+                        <a href="https://wa.me/593996812371">WhatsApp</a>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <div class="instructor-avatar">LJ</div>
+                    <h3>Luis Jaramillo</h3>
+                    <p class="instructor-title">Co-Instructor</p>
+                    <p class="instructor-bio">
+                        Software Architect con 10+ años de experiencia. Especializado en sistemas 
+                        distribuidos, AI agents y arquitectura empresarial.
+                    </p>
+                    <div class="instructor-links">
+                        <a href="https://linkedin.com/in/luis-jaramillo-3588a2174" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Testimonios</h2>
+                <p class="section-subtitle">
+                    Lo que dicen nuestros estudiantes.
+                </p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        "Este curso me cambió la forma de programar. Ahora uso AI como teammate, 
+                        no como un simple chatbot. Mi productividad se multiplicó."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AM</div>
+                        <div class="testimonial-info">
+                            <h4>Andrés M.</h4>
+                            <span>Software Developer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        "Los labs prácticos valen oro. No solo aprendí teoría, construí agentes reales 
+                        que ahora uso en mi trabajo diario."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CP</div>
+                        <div class="testimonial-info">
+                            <h4>Carla P.</h4>
+                            <span>Tech Lead</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        "La metodología SDD es exactamente lo que me faltaba. Ahora mis proyectos 
+                        tienen specs claros antes de escribir una línea de código."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JR</div>
+                        <div class="testimonial-info">
+                            <h4>Jorge R.</h4>
+                            <span>FullStack Engineer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info">
+        <div class="container">
+            <div class="info-content">
+                <h2>Información Práctica</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <h4>Modalidad</h4>
+                        <p>100% Online por Zoom</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">⏰</div>
+                        <h4>Duración</h4>
+                        <p>3 jornadas intensivas</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">👥</div>
+                        <h4>Aforo</h4>
+                        <p>Grupos reducidos</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📜</div>
+                        <h4>Certificado</h4>
+                        <p>Certificado ISCD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>🚀 Ready to Level Up?</h2>
+            <p>
+                No esperes más.Únete al curso que va a transformar tu carrera como developer.
+                Las vagas son limitadas.
+            </p>
+            <a href="https://wa.me/593996812371?text=Hola%2C%20estoy%20interesado%20en%20el%20curso%20Desarrollo%20con%20IA%3A%20De%200%20a%20Producci%C3%B3n" class="cta-button">
+                <span class="whatsapp-icon">💬</span>
+                Contáctanos por WhatsApp
+            </a>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                📱 +593 99 681 2371
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><span class="logo-code"><ISCD/></span> ISCD</h3>
+                    <p>
+                        Information Security Consulting and Development. 
+                        Líderes en formación de desarrollo con IA y ciberseguridad.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://youtube.com/@ISCDcanal" target="_blank" title="YouTube">
+                            📺
+                        </a>
+                        <a href="https://linkedin.com/in/luis-jaramillo-3588a2174" target="_blank" title="LinkedIn">
+                            💼
+                        </a>
+                        <a href="https://wa.me/593996812371" target="_blank" title="WhatsApp">
+                            💬
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Curso</h4>
+                    <ul>
+                        <li><a href="#curso">Temario</a></li>
+                        <li><a href="#diferenciadores">Diferenciadores</a></li>
+                        <li><a href="#instructores">Instructores</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="https://wa.me/593996812371">WhatsApp</a></li>
+                        <li><a href="https://youtube.com/@ISCDcanal">YouTube</a></li>
+                        <li><a href="https://linkedin.com/in/luis-jaramillo-3588a2174">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 ISCD - Information Security Consulting and Development. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
