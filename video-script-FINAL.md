@@ -255,13 +255,13 @@
 - QR code grande de WhatsApp animado
 - Número: "+593 99 681 2371"
 
-> "El número es +593 99 681 2371. Estamos en Ecuador, pero acceptamos estudiantes de cualquier país."
+> "El número es +593 99 681 2371. Estamos en Ecuador, pero aceptamos estudiantes de cualquier país."
 
 **EN PANTALLA:**
 - Card con LinkedIn de Luis
 - Botón: "Connect with Luis"
 
-> "O connecta con Luis en LinkedIn — el link está en la descripción."
+> "O conecta con Luis en LinkedIn — el link está en la descripción."
 
 > "Nos vemos en el curso."
 
@@ -350,7 +350,7 @@
 ## [0:55 - 1:00] CTA 📲
 
 **LO QUE DECÍS:**
-> "Escríbenos al +593 99 681 2371 por WhatsApp. O connecta con Luis en LinkedIn — el link está en la bio."
+> "Escríbenos al +593 99 681 2371 por WhatsApp. O conecta con Luis en LinkedIn — el link está en la bio."
 
 **EN PANTALLA:**
 - Número de WhatsApp grande

@@ -69,14 +69,23 @@ book:
         - contenido/nivel6.qmd
         - labs/lab-nivel6.md
         - labs/boss-fight6.md
+    - part: "📝 Quizzes y Evaluaciones"
+      chapters:
+        - quizzes/unidad1.md
+        - quizzes/unidad2.md
+        - quizzes/unidad3.md
+        - quizzes/unidad4.md
+        - quizzes/unidad5.md
+        - quizzes/unidad6.md
     - part: "📚 Referencias y Recursos"
       chapters:
-        - recursos/gentle-ai-stack.md
+        - recursos/prd.md
+        - recursos/sdd.md
         - recursos/engram.md
         - recursos/mcp.md
         - recursos/skills.md
-        - recursos/sdd.md
         - recursos/herramientas-ia.md
+        - recursos/gentle-ai-stack.md
     - part: "ℹ️ Información"
       chapters:
         - about.qmd
