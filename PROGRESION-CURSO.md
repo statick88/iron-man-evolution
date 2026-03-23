@@ -89,11 +89,12 @@ Con las habilidades para:
 |-------------------------------|----------------------------|
 | **Security First** | ✅ Security by Default en código |
 | **Zero Trust** | ✅ "Nunca confiar, siempre verificar" |
+| **PRD** | ✅ Product Requirements Document antes de SDD |
 | **SDD** | ✅ Spec-Driven Development completo |
 | **Sub-agentes** | ✅ Orquestación multi-agente real |
 | **Git worktrees** | ✅ Aislamiento para trabajo paralelo |
 
-**Resultado**: Puedes implementar los 4 principios fundamentales en código.
+**Resultado**: Puedes implementar los 4 principios fundamentales en código. Entiendes la diferencia entre QUÉ construir (PRD) y CÓMO construirlo (SDD).
 
 ---
 
@@ -123,6 +124,7 @@ Con las habilidades para:
 | **Orquestador Multi-Agente** | Nivel 1-2: Una sola IA<br>Nivel 3: Primer agente<br>Nivel 4: Múltiples herramientas<br>Nivel 5: Sub-agentes<br>Nivel 6: OrquestadorSDD completo |
 | **Security First** | Nivel 1: No compartir datos<br>Nivel 2: Validar outputs<br>Nivel 3: Verificar código<br>Nivel 5: Security by Default<br>Nivel 6: Automatización completa |
 | **Zero Trust** | Nivel 1: No creer todo<br>Nivel 2: Cuestionar resultados<br>Nivel 3: Verificar antes de ejecutar<br>Nivel 5: "Nunca confiar"<br>Nivel 6: Escaneo automático |
+| **PRD** | Nivel 1: Entender el problema<br>Nivel 2: Contexto básico<br>Nivel 3: user stories<br>Nivel 4: Definir scope<br>Nivel 5: PRD completo<br>Nivel 6: PRD automatizado |
 | **Spec-Driven Development** | Nivel 1: Requests claros<br>Nivel 2: AGENTS.md<br>Nivel 3: Criterios básicos<br>Nivel 4: Especificaciones formales<br>Nivel 5: SDD completo<br>Nivel 6: SDD automatizado |
 | **Git Worktrees** | Nivel 1-2: Organización básica<br>Nivel 3: Concepto de aislamiento<br>Nivel 5: Implementación manual<br>Nivel 6: Automatización completa |
 | **Flujo de 7 Pasos** | Nivel 1: Paso 1 (Análisis básico)<br>Nivel 2: Paso 2 (Propuesta simple)<br>Nivel 3: Paso 4 (Implementación)<br>Nivel 4: Paso 5 (Testing)<br>Nivel 5: Todos los pasos con control<br>Nivel 6: Flujo automatizado completo |

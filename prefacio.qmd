@@ -1,0 +1,86 @@
+# Prefacio
+
+---
+
+## Por qué escribí este libro
+
+Hace años, cuando empecé en esto del desarrollo, creía que ser buen programador significaba saber más sintaxis que los demás. Saber más frameworks. Tener más líneas de código en GitHub.
+
+Equivocado.
+
+Lo que realmente distingue a un desarrollador excepcional no es qué sabe — es cómo piensa. Cómo aborda problemas. Cómo collaborator con herramientas, con equipos, con la incertidumbre.
+
+Durante años, observè a los mejores desarrolladores y me preguntè: ¿qué tienen que yo no tenga? La respuesta no era talento. Era un modelo mental. Una forma de ver el desarrollo que no se enseña en tutoriales ni en bootcamps.
+
+**Iron Man Evolution** es el libro que me hubiera gustado tener cuando empezaba. No teacha JavaScript, Python ni TypeScript. Enseña a pensar como quien construye sistemas que importan. Como quien tiene una visión y la ejecuta, pieza por pieza, sin perder el norte.
+
+---
+
+## Cómo usar este libro
+
+Este no es un libro para leer pasivamente. Es un libro para trabajar.
+
+Cada nivel tiene:
+
+1. **Contenido conceptual** — los fundamentos que necesitas entender
+2. **Laboratorio práctica** — donde implementas lo aprendido
+3. **Boss Fight** — el desafío que separa a quienes "entienden" de quienes "pueden"
+
+> ⚡ **Consejo**: No salts capítulos. El libro está diseñado con una progresión donde cada nivel construye sobre el anterior. Siintentásskip, vas a perder contexto importante.
+
+---
+
+## Requisitos previos
+
+Para aprovechar este libro necesitas:
+
+- **Conocimiento básico de programación** — al menos un lenguaje (cualquiera sirve)
+- **Una cuenta de GitHub** — porque vamos a usar GitHub Copilot y MCP
+- **Ganas de construir algo que importe** — esto no es para quienes buscan shortcuts
+
+No necesitas:
+- Ser experto en IA — vamos a construir esa habilidad juntos
+- Conocer Marvel o Iron Man — aunque有所帮助, no es obligatorio
+- Un setup perfecto — empezarás con lo básico y货 creces
+
+---
+
+## Estructura del libro
+
+| Nivel | Título | Enfoque |
+|-------|--------|---------|
+| 1 | El Demo en la Cueva | Prompt Engineering Básico |
+| 2 | El Mark I | Automatización y Scripts |
+| 3 | De la Chatarra al Artefacto | Refactoring con IA |
+| 4 | El Jarvis Primordial | Agentes y Workflows |
+| 5 | De Agente a Arquitecto | SDD y Arquitectura |
+| 6 | El Nanotech Viviente | Sistemas Multi-Agente |
+
+---
+
+## Cómo contactar al autor
+
+¿Preguntas? ¿Comentarios? ¿Erratas que encontrar?
+
+- **GitHub**: [github.com/statick88](https://github.com/statick88)
+- **LinkedIn**: [linkedin.com/in/diego-saavedra-developer](https://linkedin.com/in/diego-saavedra-developer)
+- **Twitter/X**: [@statick_ds](https://twitter.com/statick_ds)
+- **Web**: [statick88.github.io](https://statick88.github.io/)
+
+También puedes abrir un issue en el repositorio del libro:  
+📚 [github.com/statick88/curso-iron-man-evolution](https://github.com/statick88/curso-iron-man-evolution)
+
+---
+
+## Un último pensamiento
+
+Tony Stark no tenía un manual cuando despertó en esa cueva. Tenía un problema, herramientas limitadas, y la determinación de no morir ahí.
+
+Vos tampoco necesitás un manual perfecto. Necesitás empezar.
+
+Bienvenido a **Iron Man Evolution**.
+
+---
+
+*— Diego Saavedra García*  
+*Marzo 2026*

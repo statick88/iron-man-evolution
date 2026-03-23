@@ -52,12 +52,15 @@ Crear un sistema de asistencia inteligente para desarrollo. Al finalizar, tendr�
 > **"Un buen asistente anticipa, no reacciona."** — J.A.R.V.I.S.
 
 **REGLA ORO**: La verdadera inteligencia está en anticipar problemas, no solo resolverlos.
-# 🎯 Lab 4: Iteración Mortal
 
-## El Primer Intento Nunca es el Último
+---
+
+## 🔧 Ejercicios: Iteración Mortal
+
+### El Primer Intento Nunca es el Último
 
 
-## ⏱️ Timeline de Verificación
+#### ⏱️ Timeline de Verificación
 
 | Paso | Descripción | Tiempo | Completado |
 |------|-------------|--------|------------|

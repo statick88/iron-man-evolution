@@ -1384,6 +1384,7 @@ if __name__ == "__main__":
 
 ### **Documentación**
 - [Spec-Driven Development](https://spec-driven.dev)
+- [Product Requirements Document (PRD)](../recursos/prd.md) - Documento de requisitos de producto
 - [AI Ethics Guidelines](https://www.ethicsguidebook.ac.uk/)
 - [Responsible AI Practices](https://www.microsoft.com/ai/responsible-ai)
 

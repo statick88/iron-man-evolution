@@ -38,7 +38,7 @@ Tony Stark crea el Mark III. Primera armadura roja y dorada. Primera armadura qu
 
 ---
 
-## 🎯 **Objetivo del Lab**
+## 🎯 Objetivo del Lab
 
 Transformar tu prototipo en un producto profesional. Al finalizar, tendrás:
 
@@ -54,12 +54,16 @@ Transformar tu prototipo en un producto profesional. Al finalizar, tendrás:
 > **"No es un prototipo. Es una armadura."** — Tony Stark
 
 **REGLA ORO**: Calidad sobre velocidad. Un Mark III bien hecho vale más que diez Mark I.
-# 🎯 Lab 3: Piloto y Copiloto
 
-## Manteniendo el Control
+---
 
+## 🔧 Ejercicios: Piloto y Copiloto
 
-## ⏱️ Timeline de Verificación
+**En este ejercicio practicarás mantener el control como piloto.**
+
+---
+
+#### ⏱️ Timeline de Verificación
 
 | Paso | Descripción | Tiempo | Completado |
 |------|-------------|--------|------------|

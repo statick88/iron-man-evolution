@@ -1,0 +1,22 @@
+# Dedicatoria
+
+---
+
+> *"A todos los que alguna vez se encontraron en una cueva sin recursos, pero con la determinación de construir algo extraordinario."*
+
+---
+
+A ti, que has llegado hasta aquí con nada más que tu curiosidad y la negativa a aceptar que "así nomás" es suficiente.
+
+Este libro está dedicado a quienes bangun a las 2am debugueando porque no pueden dormir hasta resolver ese bug. A los que publican su código aunque nadie lo vea. A los que preguntan "y si lo hago diferente?" cuando todos dicen que es imposible.
+
+Tony Stark no eligió la cueva. Pero eligió qué hacer dentro de ella.
+
+Esa elección es lo que te trajo hasta aquí.
+
+Gracias por elegir construir.
+
+---
+
+*— Diego "Statick" Saavedra García*  
+*Marzo 2026*

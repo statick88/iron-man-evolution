@@ -54,12 +54,16 @@ Crear un ecosistema multi-agente. Al finalizar, tendrás:
 > **"La verdadera inteligencia está en la colaboración."** — FRIDAY
 
 **REGLA ORO**: Los mejores sistemas no son los más inteligentes, sino los que mejor se **coordinan**.
-# 🎯 Lab 6: El Proyecto Final
 
-## Aplicando Todo el Protocolo Stark
+---
 
+## 🔧 Ejercicios: El Proyecto Final
 
-## ⏱️ Timeline de Verificación
+### Aplicando Todo el Protocolo Stark
+
+---
+
+#### ⏱️ Timeline de Verificación
 
 | Paso | Descripción | Tiempo | Completado |
 |------|-------------|--------|------------|

@@ -330,6 +330,760 @@ def process(data: list[dict]) -> list[dict]:
 
 ---
 
+### **3.4 Introducción a Agentes y Sub-agentes**
+
+> *"Puedo construir esto. Solo necesito un poco de ayuda."* — Tony Stark (antes de crear a JARVIS)
+
+En los niveles anteriores, construiste sistemas que **responden** ainputs. Ahora vas a construir sistemas que **actúan** por sí mismos.
+
+#### **¿Qué es un Agente?**
+
+Un agente es un sistema que:
+
+1. **Percibe** su entorno (inputs, contexto, estado)
+2. **Decide** qué acción tomar (basado en objetivos)
+3. **Ejecuta** la acción (produce outputs)
+4. **Aprende** del resultado (mejora decisiones futuras)
+
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   PERCIBE   │ ──► │   DECIDE    │ ──► │   EJECUTA  │ ──► │   APRENDE   │
+│   (Input)   │     │   (Lógica)  │     │   (Output) │     │   (Feedback)│
+└─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+```
+
+#### **Arquitectura de Agente Básico**
+
+```python
+from abc import ABC, abstractmethod
+from dataclasses import dataclass
+from typing import Any, Optional
+from enum import Enum
+
+class AgentState(Enum):
+    IDLE = "idle"
+    THINKING = "thinking"
+    ACTING = "acting"
+    ERROR = "error"
+
+@dataclass
+class AgentContext:
+    """Contexto que el agente mantiene entre ejecuciones."""
+    history: list[dict]  # Conversación previa
+    memory: dict         # Memoria a largo plazo
+    preferences: dict    # Preferencias del usuario
+    
+    def add_interaction(self, role: str, content: str):
+        """Agrega una interacción al historial."""
+        self.history.append({"role": role, "content": content})
+
+class BaseAgent(ABC):
+    """Clase base para agentes."""
+    
+    def __init__(self, name: str):
+        self.name = name
+        self.state = AgentState.IDLE
+        self.context = AgentContext(
+            history=[],
+            memory={},
+            preferences={}
+        )
+    
+    @abstractmethod
+    def think(self, input_data: str) -> str:
+        """Procesa el input y decide qué hacer."""
+        pass
+    
+    @abstractmethod
+    def act(self, decision: str) -> Any:
+        """Ejecuta la decisión y retorna resultado."""
+        pass
+    
+    def run(self, input_data: str) -> Any:
+        """Ejecuta el ciclo completo del agente."""
+        self.state = AgentState.THINKING
+        decision = self.think(input_data)
+        
+        self.state = AgentState.ACTING
+        result = self.act(decision)
+        
+        self.context.add_interaction("user", input_data)
+        self.context.add_interaction("assistant", str(result))
+        
+        self.state = AgentState.IDLE
+        return result
+    
+    def get_memory(self, key: str) -> Optional[Any]:
+        """Recupera información de la memoria."""
+        return self.context.memory.get(key)
+    
+    def set_memory(self, key: str, value: Any):
+        """Almacena información en la memoria."""
+        self.context.memory[key] = value
+
+# Ejemplo de agente concreto
+class InventoryAgent(BaseAgent):
+    """Agente para gestionar inventario."""
+    
+    def think(self, input_data: str) -> str:
+        """Decide qué acción tomar basándose en el input."""
+        input_lower = input_data.lower()
+        
+        if "agregar" in input_lower or "crear" in input_lower:
+            return "CREATE"
+        elif "buscar" in input_lower or "consultar" in input_lower:
+            return "SEARCH"
+        elif "actualizar" in input_lower or "modificar" in input_lower:
+            return "UPDATE"
+        elif "eliminar" in input_lower or "borrar" in input_lower:
+            return "DELETE"
+        else:
+            return "UNKNOWN"
+    
+    def act(self, decision: str) -> Any:
+        """Ejecuta la acción decideda."""
+        # Aquí iría la lógica real del inventario
+        return {"action": decision, "status": "executed"}
+
+# Uso del agente
+agent = InventoryAgent("InventoryManager")
+result = agent.run("Agregar nuevo producto: Mark III Armor")
+print(f"Resultado: {result}")
+```
+
+---
+
+#### **Patrón Sub-agente: El Equipo de Tony Stark**
+
+Tony no hace todo solo. Tiene a JARVIS, a Happy, a Pepper. Cada uno es un experto en su área.
+
+El patrón **sub-agente** divide el trabajo entre agentes especializados:
+
+```
+                    ┌──────────────┐
+                    │  ORCHESTRATOR │
+                    │    AGENT      │
+                    └──────┬───────┘
+                           │
+         ┌─────────────────┼─────────────────┐
+         │                 │                 │
+    ┌────▼────┐      ┌────▼────┐      ┌────▼────┐
+    │ AGENT A │      │ AGENT B │      │ AGENT C │
+    │ (Search)│      │(Analyze)│      │(Execute)│
+    └─────────┘      └─────────┘      └─────────┘
+```
+
+```python
+from typing import Protocol
+import asyncio
+
+class SubAgent(Protocol):
+    """Protocolo que deben implementar todos los sub-agentes."""
+    async def execute(self, task: dict) -> dict:
+        """Ejecuta una tarea específica."""
+        ...
+
+class OrchestratorAgent:
+    """Agente orquestador que coordina sub-agentes."""
+    
+    def __init__(self):
+        self.sub_agents: dict[str, SubAgent] = {}
+    
+    def register_agent(self, name: str, agent: SubAgent):
+        """Registra un sub-agente."""
+        self.sub_agents[name] = agent
+    
+    async def delegate_task(self, task: dict) -> dict:
+        """Delega la tarea al agente apropiado."""
+        task_type = task.get("type", "unknown")
+        
+        if task_type not in self.sub_agents:
+            return {"error": f"No hay agente para tareas de tipo: {task_type}"}
+        
+        agent = self.sub_agents[task_type]
+        return await agent.execute(task)
+    
+    async def run_pipeline(self, tasks: list[dict]) -> list[dict]:
+        """Ejecuta una serie de tareas en pipeline."""
+        results = []
+        for task in tasks:
+            result = await self.delegate_task(task)
+            results.append(result)
+        return results
+
+# Ejemplo de sub-agentes
+class SearchAgent:
+    async def execute(self, task: dict) -> dict:
+        query = task.get("query", "")
+        # Lógica de búsqueda...
+        return {"results": f"Resultados para: {query}", "count": 5}
+
+class AnalysisAgent:
+    async def execute(self, task: dict) -> dict:
+        data = task.get("data", "")
+        # Lógica de análisis...
+        return {"analysis": f"Análisis de: {data}", "sentiment": "positive"}
+
+# Uso
+orchestrator = OrchestratorAgent()
+orchestrator.register_agent("search", SearchAgent())
+orchestrator.register_agent("analysis", AnalysisAgent())
+
+# Ejecutar pipeline
+tasks = [
+    {"type": "search", "query": "armaduras Mark"},
+    {"type": "analysis", "data": "Resultados de armaduras"}
+]
+
+async def main():
+    results = await orchestrator.run_pipeline(tasks)
+    for r in results:
+        print(r)
+
+asyncio.run(main())
+```
+
+---
+
+### **3.5 Patrón Pipeline: Encadenando Agentes**
+
+> *"No necesito hacer todo yo mismo. Solo necesito conectar las piezas correctas."* — Tony Stark
+
+Un **pipeline** es una cadena de agentes donde la salida de uno se convierte en la entrada del siguiente.
+
+#### **Pipeline Secuencial vs Paralelo**
+
+```
+SECUENCIAL (uno después de otro):
+┌─────┐    ┌─────┐    ┌─────┐    ┌─────┐
+│ A   │───►│ B   │───►│ C   │───►│ D   │
+└─────┘    └─────┘    └─────┘    └─────┘
+Input    Output A   Output B   Output C   Output D
+
+PARALELO (todos procesan el mismo input):
+         ┌─────┐
+    ┌────│ A   │──┐
+    │    └─────┘  │
+    │    ┌─────┐  │
+───►├────│ B   │──┼──► Combinar resultados
+    │    └─────┘  │
+    │    ┌─────┐  │
+    └────│ C   │──┘
+         └─────┘
+```
+
+#### **Pipeline de 3 Agentes: El Asistente de Investigación**
+
+Imagina un pipeline para investigar un tema:
+
+1. **Researcher**: Busca información relevante
+2. **Analyzer**: Analiza y sintetiza los hallazgos
+3. **Reporter**: Genera un reporte estructurado
+
+```python
+import asyncio
+from dataclasses import dataclass
+from typing import Optional
+import json
+
+@dataclass
+class PipelineTask:
+    """Tarea en el pipeline."""
+    task_id: str
+    input_data: str
+    metadata: dict
+
+@dataclass
+class PipelineResult:
+    """Resultado de una tarea en el pipeline."""
+    task_id: str
+    agent_name: str
+    output: str
+    success: bool
+    error: Optional[str] = None
+
+class BaseAgent(ABC):
+    """Agente base con soporte para pipelines."""
+    
+    def __init__(self, name: str):
+        self.name = name
+    
+    @abstractmethod
+    async def process(self, input_data: str) -> str:
+        """Procesa el input y retorna output."""
+        pass
+    
+    async def execute(self, task: PipelineTask) -> PipelineResult:
+        """Ejecuta el agente y envuelve el resultado."""
+        try:
+            output = await self.process(task.input_data)
+            return PipelineResult(
+                task_id=task.task_id,
+                agent_name=self.name,
+                output=output,
+                success=True
+            )
+        except Exception as e:
+            return PipelineResult(
+                task_id=task.task_id,
+                agent_name=self.name,
+                output="",
+                success=False,
+                error=str(e)
+            )
+
+# Agentes del pipeline
+class ResearcherAgent(BaseAgent):
+    """Agente que busca información."""
+    
+    async def process(self, input_data: str) -> str:
+        # Simulación de búsqueda
+        await asyncio.sleep(0.1)  # Simular trabajo
+        return json.dumps({
+            "sources": [
+                {"title": f"Fuente 1 sobre {input_data}", "relevance": 0.9},
+                {"title": f"Fuente 2 sobre {input_data}", "relevance": 0.7},
+                {"title": f"Fuente 3 sobre {input_data}", "relevance": 0.5},
+            ],
+            "query": input_data
+        })
+
+class AnalyzerAgent(BaseAgent):
+    """Agente que analiza la información."""
+    
+    async def process(self, input_data: str) -> str:
+        # Parsear el input (output del Researcher)
+        data = json.loads(input_data)
+        sources = data.get("sources", [])
+        
+        # Analizar y sintetizar
+        summary = f"Análisis de {len(sources)} fuentes encontradas\n"
+        summary += "Hallazgos principales:\n"
+        for source in sources[:2]:  # Top 2
+            summary += f"- {source['title']} (relevancia: {source['relevance']})\n"
+        
+        return json.dumps({
+            "summary": summary,
+            "key_findings": ["Hallazgo 1", "Hallazgo 2"],
+            "confidence": 0.85
+        })
+
+class ReporterAgent(BaseAgent):
+    """Agente que genera el reporte final."""
+    
+    async def process(self, input_data: str) -> str:
+        # Parsear el input (output del Analyzer)
+        data = json.loads(input_data)
+        
+        # Generar reporte
+        report = f"""# Reporte de Investigación
+        
+## Resumen
+{data.get('summary', '')}
+
+## Hallazgos Clave
+"""
+        for i, finding in enumerate(data.get("key_findings", []), 1):
+            report += f"{i}. {finding}\n"
+        
+        report += f"\n## Confianza del Análisis\n{data.get('confidence', 0) * 100}%"
+        
+        return report
+
+# Pipeline Orchestrator
+class PipelineOrchestrator:
+    """Orquestador del pipeline de investigación."""
+    
+    def __init__(self):
+        self.agents: list[BaseAgent] = []
+    
+    def add_agent(self, agent: BaseAgent):
+        """Agrega un agente al pipeline."""
+        self.agents.append(agent)
+    
+    async def execute(self, input_data: str) -> dict:
+        """Ejecuta el pipeline completo."""
+        results = []
+        current_input = input_data
+        task_id = "task_001"
+        
+        print(f"🚀 Iniciando pipeline con input: '{input_data}'")
+        
+        for agent in self.agents:
+            print(f"  ↳ Ejecutando {agent.name}...")
+            task = PipelineTask(
+                task_id=task_id,
+                input_data=current_input,
+                metadata={}
+            )
+            
+            result = await agent.execute(task)
+            results.append(result)
+            
+            if result.success:
+                current_input = result.output
+                print(f"     ✓ Completado")
+            else:
+                print(f"     ✗ Error: {result.error}")
+                return {"success": False, "results": results}
+        
+        return {
+            "success": True,
+            "results": results,
+            "final_output": current_input
+        }
+
+# Uso del pipeline
+async def main():
+    pipeline = PipelineOrchestrator()
+    pipeline.add_agent(ResearcherAgent("Researcher"))
+    pipeline.add_agent(AnalyzerAgent("Analyzer"))
+    pipeline.add_agent(ReporterAgent("Reporter"))
+    
+    result = await pipeline.execute("inteligencia artificial en medicina")
+    
+    if result["success"]:
+        print("\n" + "="*50)
+        print("REPORTE FINAL:")
+        print("="*50)
+        print(result["final_output"])
+    else:
+        print("Pipeline falló")
+
+asyncio.run(main())
+```
+
+---
+
+### **3.6 El Problema de la Memoria: Por qué los Agentes Olvidan**
+
+> *"¿Dónde guardé eso?"* — Tu agente, probablemente
+
+#### **El Problema Fundamental**
+
+Cada vez que ejecutas un agente, este **empieza desde cero**:
+
+```python
+# Ejecución 1
+agent = MiAgente()
+result = agent.run("Hola, me llamo Diego")
+# El agente knows "Diego" existe
+
+# Ejecución 2 (nueva sesión)
+agent2 = MiAgente()
+result2 = agent2.run("¿Cómo me llamo?")
+# ❌ El agente no tiene idea de quién eres
+#从头开始 (empezar desde cero)
+```
+
+**Esto es un problema real en producción:**
+
+| Escenario | Qué pasa |
+|-----------|----------|
+| Chat con usuario | No recuerda preferencias |
+| Agente de tareas | Pierde contexto de tareas previas |
+| Pipeline complejo | No mantiene estado entre pasos |
+| Sistema multi-sesión | Cada usuario es un desconocido |
+
+#### **¿Por qué los Agentes Olvidan?**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    MEMORIA VOLÁTIL                       │
+│  (RAM, variables, contexto de ejecución)               │
+│                                                         │
+│  ✓ Rápida                                              │
+│  ✓ Accesible                                           │
+│  ✗ Se pierde al terminar la ejecución                  │
+│  ✗ No persiste entre sesiones                          │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────┐
+│               LA SOLUCIÓN: MEMORIA PERSISTENTE          │
+│                                                         │
+│  - Base de datos                                       │
+│  - Archivos                                            │
+│  - Sistemas de memoria especializada (Engram)        │
+│                                                         │
+│  ✓ Persiste entre sesiones                             │
+│  ✓ Consulta rápida                                     │
+│  ✓ Historial completo                                  │
+└─────────────────────────────────────────────────────────┘
+```
+
+#### **Tipos de Memoria en Agentes**
+
+| Tipo | Duración | Ejemplo | Caso de uso |
+|------|----------|---------|-------------|
+| **Working** | Segundos | Variables locales | Procesamiento inmediato |
+| **Session** | Minutos/horas | Contexto HTTP | Conversación activa |
+| **Long-term** | Indefinido | DB, archivos | Historial completo |
+| **Semantic** | Estructurado | Vector DB | Búsqueda por significado |
+
+#### **Patrón: Agente con Memoria**
+
+```python
+from abc import ABC, abstractmethod
+from datetime import datetime
+import json
+from typing import Optional
+
+class MemoryStore(ABC):
+    """Interfaz para almacenamiento de memoria."""
+    
+    @abstractmethod
+    def save(self, key: str, value: str) -> None:
+        pass
+    
+    @abstractmethod
+    def retrieve(self, key: str) -> Optional[str]:
+        pass
+    
+    @abstractmethod
+    def search(self, query: str) -> list[str]:
+        pass
+
+class InMemoryStore(MemoryStore):
+    """Implementación en memoria (para desarrollo)."""
+    
+    def __init__(self):
+        self.data: dict[str, str] = {}
+    
+    def save(self, key: str, value: str) -> None:
+        self.data[key] = value
+    
+    def retrieve(self, key: str) -> Optional[str]:
+        return self.data.get(key)
+    
+    def search(self, query: str) -> list[str]:
+        # Búsqueda simple (en producción usarías vector search)
+        return [v for k, v in self.data.items() if query.lower() in k.lower()]
+
+class AgentWithMemory:
+    """Agente que mantiene memoria persistente."""
+    
+    def __init__(self, name: str, memory_store: MemoryStore):
+        self.name = name
+        self.memory = memory_store
+    
+    def remember(self, key: str, value: str):
+        """Guarda algo en memoria."""
+        timestamp = datetime.now().isoformat()
+        entry = json.dumps({
+            "value": value,
+            "timestamp": timestamp,
+            "agent": self.name
+        })
+        self.memory.save(key, entry)
+        print(f"💾 Recordando: {key}")
+    
+    def recall(self, key: str) -> Optional[dict]:
+        """Recupera algo de memoria."""
+        entry = self.memory.retrieve(key)
+        if entry:
+            return json.loads(entry)
+        return None
+    
+    def search_memory(self, query: str) -> list[str]:
+        """Busca en la memoria."""
+        return self.memory.search(query)
+    
+    async def process(self, input_data: str) -> str:
+        """Procesa input considerando la memoria."""
+        # 1. Buscar contexto relevante en memoria
+        relevant = self.search_memory(input_data)
+        
+        # 2. Procesar con ese contexto
+        if relevant:
+            context = f"Based on memory: {relevant[0]}"
+        else:
+            context = "No relevant memory found"
+        
+        # 3. Recordar la interacción
+        self.remember(
+            f"interaction_{datetime.now().timestamp()}",
+            f"User: {input_data}"
+        )
+        
+        return f"Processed with context: {context[:50]}..."
+
+# Uso
+memory = InMemoryStore()
+agent = AgentWithMemory("TestAgent", memory)
+
+# Primera interacción
+asyncio.run(agent.process("Me gusta la armadura Mark III"))
+
+# Segunda interacción - debería recordar contexto
+asyncio.run(agent.process("¿Qué me gusta?"))
+```
+
+---
+
+### **3.7 Testing Avanzado para Agentes**
+
+> *"Si no lo testea, no funciona en producción."* — Tony Stark (definitivamente)
+
+#### **Tipos de Tests para Sistemas de Agentes**
+
+| Tipo de Test | Qué Prueba | Ejemplo |
+|--------------|------------|---------|
+| **Unit Tests** | Funciones individuales | ¿`think()` retorna la decisión correcta? |
+| **Integration Tests** | Múltiples componentes | ¿El agente funciona con el memory store? |
+| **End-to-End** | Flujo completo | ¿El pipeline produce el resultado esperado? |
+| **Property-Based** | Propiedades del código | ¿La salida siempre es un string válido? |
+| **Performance** | Rendimiento | ¿Responde en <100ms? |
+| **Security** | Vulnerabilidades | ¿Previene inyección de prompts? |
+
+#### **Coverage de Código**
+
+```python
+# Ejecutar con coverage
+# pytest --cov=src --cov-report=html
+
+# Configuración de coverage en pytest.ini
+[tool.pytest.ini_options]
+addopts = "--cov=src --cov-report=term-missing --cov-fail-under=80"
+
+# Ejemplo de tests con coverage
+import pytest
+from agent import AgenteBase, PipelineOrchestrator
+
+class TestAgenteBasico:
+    """Tests unitarios del agente."""
+    
+    def test_inicializacion(self):
+        agent = AgenteBase("Test")
+        assert agent.name == "Test"
+        assert agent.state == "idle"
+    
+    def test_decision_correcta(self):
+        agent = AgenteBase("Test")
+        decision = agent.think("agregar producto")
+        assert decision == "CREATE"
+
+class TestPipeline:
+    """Tests de integración del pipeline."""
+    
+    @pytest.mark.asyncio
+    async def test_pipeline_ejecuta_todos_agentes(self):
+        pipeline = PipelineOrchestrator()
+        pipeline.add_agent(MockAgent("A"))
+        pipeline.add_agent(MockAgent("B"))
+        
+        result = await pipeline.execute("test input")
+        
+        assert result["success"]
+        assert len(result["results"]) == 2
+    
+    @pytest.mark.asyncio
+    async def test_pipeline_falla_en_error(self):
+        pipeline = PipelineOrchestrator()
+        pipeline.add_agent(FailingAgent())  # Always fails
+        
+        result = await pipeline.execute("test")
+        
+        assert not result["success"]
+
+# Coverage mínimo requerido
+# - unit tests: 80%
+# - integration: 70%
+# - e2e: 60%
+```
+
+#### **TDD con Agentes: Ciclo Red-Green-Refactor**
+
+```
+    ┌─────────────┐
+    │    RED      │
+    │  Escribe un │
+    │ test que    │
+    │    falla    │
+    └──────┬──────┘
+           │
+           ▼
+    ┌─────────────┐
+    │   GREEN     │
+    │  Escribe    │
+    │ código que  │
+    │ pase el test│
+    └──────┬──────┘
+           │
+           ▼
+    ┌─────────────┐
+    │   REFACTOR  │
+    │  Mejora el  │
+    │ código sin  │
+    │ romper tests│
+    └─────────────┘
+```
+
+**Ejemplo: TDD para un Agente de Inventario**
+
+```python
+# 📝 Paso 1: Escribe el test que falla (RED)
+class TestInventoryAgent:
+    def test_agente_crea_producto_correctamente(self):
+        # Arrange
+        agent = InventoryAgent()
+        
+        # Act
+        result = agent.run("Crear producto: Mark III, cantidad: 5")
+        
+        # Assert
+        assert result["status"] == "created"
+        assert result["product"]["name"] == "Mark III"
+        assert result["product"]["quantity"] == 5
+
+# ❌ Test falla: "InventoryAgent" no existe aún
+
+# 📝 Paso 2: Escribe código mínimo para pasar (GREEN)
+class InventoryAgent:
+    def run(self, input_data: str) -> dict:
+        # Parse simple
+        if "Crear producto:" in input_data:
+            return {
+                "status": "created",
+                "product": {
+                    "name": "Mark III",
+                    "quantity": 5
+                }
+            }
+        return {"error": "Unknown command"}
+
+# ✅ Test pasa
+
+# 📝 Paso 3: Refactoriza (REFACTOR)
+# Mejorar el código mientras los tests pasan
+class InventoryAgent:
+    """Agente para gestión de inventario."""
+    
+    def __init__(self):
+        self.inventory = {}
+    
+    def _parse_create_command(self, text: str) -> dict:
+        """Parsea comandos de creación."""
+        import re
+        match = re.search(r'producto: (\w+).*cantidad: (\d+)', text)
+        if match:
+            return {"name": match.group(1), "quantity": int(match.group(2))}
+        return None
+    
+    def run(self, input_data: str) -> dict:
+        """Ejecuta el comando del usuario."""
+        if "Crear producto:" in input_data:
+            product = self._parse_create_command(input_data)
+            if product:
+                self.inventory[product["name"]] = product
+                return {"status": "created", "product": product}
+        return {"error": "Unknown command"}
+
+# ✅ Tests siguen pasando, código más robusto
+```
+
+---
+
 ## 🔬 **Laboratorio 3: El Primer Vuelo**
 
 ### **Objetivo**
@@ -340,6 +1094,7 @@ Tomar tu sistema del Mark I (Nivel 2) y hacerlo robusto para producción:
 2. Agregar tests para edge cases
 3. Refactorizar código problemático
 4. Optimizar rendimiento
+5. **Agregar memoria persistente** (preview del Nivel 4)
 
 ### **Ejercicio 1: El Bug del Mark III 🐛**
 
@@ -451,6 +1206,110 @@ def handle_request(data, user, action, options=None, callback=None, **kwargs):
 
 ---
 
+### **Ejercicio 4: Pipeline de Agentes 🛠️**
+
+#### **Tu Tarea**
+
+Crea un pipeline de 3 agentes:
+
+1. **Input Agent**: Recibe input del usuario
+2. **Processing Agent**: Procesa y transforma
+3. **Output Agent**: Formatea la respuesta final
+
+```python
+# Template para tu pipeline
+class PipelineDemo:
+    def __init__(self):
+        self.agents = []
+    
+    def add_agent(self, agent):
+        self.agents.append(agent)
+    
+    async def run(self, input_data):
+        # Tu implementación aquí
+        pass
+
+# Test que debe pasar
+async def test_pipeline():
+    pipeline = PipelineDemo()
+    pipeline.add_agent(InputAgent())
+    pipeline.add_agent(ProcessingAgent())
+    pipeline.add_agent(OutputAgent())
+    
+    result = await pipeline.run("input de prueba")
+    assert "processed" in result.lower()
+    assert "output" in result.lower()
+```
+
+#### **Requisitos**
+
+- [ ] Pipeline secuencal funciona
+- [ ] Cada agente hace una cosa
+- [ ] Tests unitarios de cada agente
+- [ ] Test de integración del pipeline
+- [ ] Documentación del flujo
+
+---
+
+### **Ejercicio 5: Preview de Memoria Persistente 👀**
+
+#### **Tu Tarea**
+
+Implementa una versión simple de memoria persistente:
+
+```python
+class SimpleMemory:
+    """Sistema de memoria básico para agentes."""
+    
+    def __init__(self):
+        self.store = {}
+    
+    def save(self, key: str, value: str):
+        """Guarda en memoria."""
+        # Tu implementación
+        pass
+    
+    def recall(self, key: str) -> str:
+        """Recupera de memoria."""
+        # Tu implementación
+        pass
+    
+    def search(self, query: str) -> list[str]:
+        """Busca en memoria."""
+        # Tu implementación
+        pass
+
+# Tests que deben pasar
+def test_memory_save_and_recall():
+    mem = SimpleMemory()
+    mem.save("user_name", "Diego")
+    assert mem.recall("user_name") == "Diego"
+
+def test_memory_search():
+    mem = SimpleMemory()
+    mem.save("interaction_1", "Me gusta Mark III")
+    mem.save("interaction_2", "Mi color favorito es rojo")
+    results = mem.search("Mark")
+    assert len(results) == 1
+    assert "Mark III" in results[0]
+```
+
+#### **Hint**
+
+- Usa un diccionario simple para el store
+- Para search, usa contains simple (`query in value`)
+- Piensa: ¿qué pasa si la key no existe?
+
+#### **Requisitos**
+
+- [ ] save() funciona correctamente
+- [ ] recall() retorna lo guardado
+- [ ] search() encuentra contenido relevante
+- [ ] Tests unitarios pasando
+- [ ] Demo integrando con un agente simple
+
+---
+
 ## 🏆 **Logro Desbloqueado: "First Flight"**
 
 ### **Requisitos para Desbloquear**
@@ -458,22 +1317,44 @@ def handle_request(data, user, action, options=None, callback=None, **kwargs):
 - [ ] Bug del Mark III corregido
 - [ ] 5+ edge cases con tests
 - [ ] Código refactorizado (≤3 indentación)
+- [ ] Pipeline de 3 agentes funcionando
+- [ ] Sistema de memoria básico implementado
 - [ ] Todos los tests pasando
-- [ ] Documentación de cambios
 
 ### **Recompensa**
-- **+200 XP**
+- **+300 XP** (incrementado por el contenido extra)
 - **Logro "First Flight"**
-- **Acceso al Nivel 4: JARVIS Avanzado**
+- **Acceso al Nivel 4: JARVIS Avanzado (Engram + MCP)**
 
 ### **Siguiente Nivel**
 > *"Ahora viene la parte divertida."* — Tony Stark
 
-Con tu Mark III perfeccionado, estás listo para ampliar tu inteligencia: [→ **Nivel 4: JARVIS Avanzado**](nivel4.qmd)
+El Nivel 4 introduce **memoria persistente real** con Engram y **contexto de protocolo** con MCP. Lo que acabas de implementar (SimpleMemory) es la base de lo que harás con herramientas profesionales.
+
+Con tu Mark III perfeccionado, estás listo para ampliar tu inteligencia: [→ **Nivel 4: JARVIS Avanzado (Engram + MCP)**](nivel4.qmd)
 
 ---
 
 ## 📚 **Recursos Adicionales**
+
+### **Agentes y Sub-agentes**
+- [LangChain Agents](https://python.langchain.com/docs/modules/agents/)
+- [AutoGPT Architecture](https://github.com/Significant-Gravitas/AutoGPT)
+- [Agent Patterns - DeepLearning.AI](https://www.deeplearning.ai/short-courses/)
+
+### **Pipeline de Agentes**
+- [LangChain Chains](https://python.langchain.com/docs/modules/chains/)
+- [Building AI Agents - AWS](https://aws.amazon.com/builders-library/)
+
+### **Testing para IA**
+- [pytest-asyncio](https://pytest-asyncio.readthedocs.io/)
+- [Property-Based Testing](https://hypothesis.readthedocs.io/)
+- [AI Testing Strategies](https://arxiv.org/)
+
+### **Memoria Persistente**
+- [Engram - Persistent Memory](https://github.com/gentleman-programming/engram)
+- [Vector Databases for AI](https://www.pinecone.io/)
+- [LangChain Memory](https://python.langchain.com/docs/modules/memory/)
 
 ### **Debugging**
 - [Python Debugging with pdb](https://docs.python.org/3/library/pdb.html)

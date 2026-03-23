@@ -33,31 +33,41 @@ book:
         href: https://github.com/Gentleman-Programming/gentle-ai
         
   chapters:
+    - portada.qmd
+    - dedicatoria.qmd
+    - prefacio.qmd
+    - agradecimientos.qmd
     - index.qmd
     - contenido/prerrequisitos.qmd
-    - part: "🎮 Niveles del Juego"
+    - part: "🏚️ Nivel 1: El Demo en la Cueva"
       chapters:
         - contenido/nivel1.qmd
-        - contenido/nivel2.qmd
-        - contenido/nivel3.qmd
-        - contenido/nivel4.qmd
-        - contenido/nivel5.qmd
-        - contenido/nivel6.qmd
-    - part: "🔬 Laboratorios Prácticos"
-      chapters:
         - labs/lab-nivel1.md
-        - labs/lab-nivel2.md
-        - labs/lab-nivel3.md
-        - labs/lab-nivel4.md
-        - labs/lab-nivel5.md
-        - labs/lab-nivel6.md
-    - part: "⚔️ Boss Fights (Retos Finales)"
-      chapters:
         - labs/boss-fight1.md
+    - part: "⚙️ Nivel 2: El Mark I"
+      chapters:
+        - contenido/nivel2.qmd
+        - labs/lab-nivel2.md
         - labs/boss-fight2.md
+    - part: "🔧 Nivel 3: De la Chatarra al Artefacto"
+      chapters:
+        - contenido/nivel3.qmd
+        - labs/lab-nivel3.md
         - labs/boss-fight3.md
+    - part: "🧠 Nivel 4: El Jarvis Primordial"
+      chapters:
+        - contenido/nivel4.qmd
+        - labs/lab-nivel4.md
         - labs/boss-fight4.md
+    - part: "🛡️ Nivel 5: De Agente a Arquitecto"
+      chapters:
+        - contenido/nivel5.qmd
+        - labs/lab-nivel5.md
         - labs/boss-fight5.md
+    - part: "🧬 Nivel 6: El Nanotech Viviente"
+      chapters:
+        - contenido/nivel6.qmd
+        - labs/lab-nivel6.md
         - labs/boss-fight6.md
     - part: "📚 Referencias y Recursos"
       chapters:

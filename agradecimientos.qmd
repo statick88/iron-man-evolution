@@ -1,0 +1,69 @@
+# Agradecimientos
+
+---
+
+Este libro no existiría sin el apoyo, inspiración y paciencia de muchas personas que me acompañaron en este camino. Gracias a cada uno de ustedes.
+
+---
+
+## Mentores y Colegas
+
+### Luis Jaramillo — ISCD
+Mentor, colega y amigo. Luis me enseñó que la ciberseguridad no es solo técnica — es una forma de pensar. Su visión del ISCD como centro de excelencia ha sido inspiración para cada página de este libro. Gracias por creer en mí cuando ni yo creía.
+
+---
+
+## Estudiantes
+
+A todos los estudiantes que han pasado por mis aulas y me han enseñado tanto como yo a ellos:
+
+### ESPE (Escuela Superior Politécnica del Ejercito)
+Por la paciencia con la que me bancaron cuando explicaba conceptos "diferentes". Ustedes saben a qué me refiero.
+
+### UIDE (Universidad Internacional de Ecuador)
+Por aceptarme como profesor cuando estaba en plena transición de carrera. Cada clase fue un aprendizaje bilateral.
+
+### ABACOM
+Por la confianza depositada en un approach poco convencional. Las conversaciones en los pasillos fueron tan valiosas como las clases formales.
+
+---
+
+## Comunidad Gentleman Programming
+
+A todo el equipo de **Gentleman Programming** — donde la filosofía "código limpio, mentalidad clara" no es solo un slogan. En especial a quienes me bancaron en las ideas locas de IA colaborativa antes de que estuviera de moda.
+
+La comunidad que construimos juntos es prueba de que el desarrollo de software puede ser diferente.
+
+---
+
+## Família
+
+A mi família — porque si, soy el typescript de la familia, siempre está tarde, pero siempre vuelve.
+
+Gracias por soportar las noches de debug, los fines de semana de grabación, y las conversaciones que empiezan con "y si..." y terminan 3 horas después.
+
+Ustedes son mi Mark 50 — la armadura que me protege cuando todo parece imposible.
+
+---
+
+## A la IA
+
+También quiero agradecer a las herramientas de IA que me acompañaron en este proceso. A ChatGPT por las conversaciones a las 2am. A Claude por los momentos de "eso no es una buena idea, Diego". A GitHub Copilot por todas las veces que completó mi código antes de que yo supiera qué quería escribir.
+
+Las IAs no son el futuro — son el presente. Y este libro existiría sin ellas.
+
+---
+
+## Y a vos
+
+Sí, vos que estás leyendo esto.
+
+Gracias por elegir este camino. Gracias por no conformarte con "así nomás funciona". Gracias por creer que podés construir algo extraordinario, aunque сейчас estés en tu propia cueva.
+
+El libro está dedicado a vos.
+
+---
+
+*Con gratitud,*  
+*Diego "Statick" Saavedra García*  
+*Marzo 2026*

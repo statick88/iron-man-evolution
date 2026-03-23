@@ -127,3 +127,112 @@ D) No dijo eso
 <summary>Respuesta</summary>
 **A) Porque J.A.R.V.I.S. tenía razón en que no preguntó por las limitaciones**
 </details>
+
+---
+
+## Pregunta 9 - True/False
+
+**¿Verdadero o Falso?**
+
+En el Protocolo Stark, el piloto (usuario) siempre debe dar instrucciones perfectas desde el primer intento.
+
+<details>
+<summary>Respuesta</summary>
+**Falso**. El piloto itera y refina. La perfección no existe en el primer intento — por eso existe la iteración.
+</details>
+
+---
+
+## Pregunta 10 - True/False
+
+**¿Verdadero o Falso?**
+
+J.A.R.V.I.S. debe ejecutar inmediatamente todo lo que Stark pide, sin hacer preguntas.
+
+<details>
+<summary>Respuesta</summary>
+**Falso**. J.A.R.V.I.S. debe HACER PREGUNTAS si falta contexto. Esto es parte del Protocolo Stark.
+</details>
+
+---
+
+## Pregunta 11 - Matching
+
+**Relaciona los conceptos con sus definiciones:**
+
+| Concepto | Definición |
+|----------|------------|
+| A. Contexto | 1. La instrucción que das a la IA |
+| B. Prompt | 2. Información que mejora los resultados |
+| C. Iteración | 3. Repetición para mejorar el resultado |
+| D. Output | 4. Lo que la IA genera |
+
+<details>
+<summary>Respuesta</summary>
+A-2, B-1, C-3, D-4
+</details>
+
+---
+
+## Pregunta 12 - Matching
+
+**Relaciona el error con la solución:**
+
+| Error Común | Solución |
+|-------------|----------|
+| A. Request vago | 1. Dar contexto específico |
+| B. Sin limitaciones | 2. Especificar constraints |
+| C. Output imperfecto | 3. Iterar y refinar |
+| D. Prompt largo | 4. Ser conciso y claro |
+
+<details>
+<summary>Respuesta</summary>
+A-1, B-2, C-3, D-4
+</details>
+
+---
+
+## Pregunta 13 - Code Output Prediction
+
+**¿Qué output produce este código?**
+
+```python
+print("JARVIS"[::-1])
+```
+
+<details>
+<summary>Respuesta</summary>
+**"SIVRAJ"** — El slicing [::-1] invierte la cadena.
+</details>
+
+---
+
+## Pregunta 14 - Case de Estudio
+
+**Contexto:**
+Stark escribe el siguiente prompt: "Escríbeme código para validar emails"
+
+**El problema principal es:**
+
+A) No especifica el lenguaje de programación
+B) No define qué constituye un email válido
+C) El prompt es muy corto
+D) No hay problema, el código funcionará
+
+<details>
+<summary>Respuesta</summary>
+**B) No define qué constituye un email válido** — ¿Solo formato básico? ¿Dominios corporativos? ¿Caracteres especiales permitidos? Sin contexto, la IA asume lo más simple y puede fallar en casos reales.
+</details>
+
+---
+
+## Pregunta 15 - Fill-in-the-Blank
+
+**Completa:**
+
+La fórmula del contexto perfecto es: **___ + Con qué + Cómo + Edge Cases**
+
+<details>
+<summary>Respuesta</summary>
+**Qué** — La fórmula completa es: Qué + Con qué + Cómo + Edge Cases
+</details>

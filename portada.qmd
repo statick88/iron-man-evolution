@@ -1,0 +1,111 @@
+---
+title: "Iron Man Evolution"
+subtitle: "De la Cueva al Nanotech"
+author: "Diego Saavedra García"
+date: "2026"
+cover-image: "images/iron-man-evolution.svg"
+description: "Curso de desarrollo con Inteligencia Artificial como Tony Stark"
+---
+
+```{=html}
+<div class="cover-container">
+  <div class="cover-logo">
+    <img src="images/iron-man-evolution.svg" alt="Iron Man Evolution" style="max-width: 200px;">
+  </div>
+  
+  <h1 class="cover-title">Iron Man Evolution</h1>
+  <h2 class="cover-subtitle">De la Cueva al Nanotech</h2>
+  
+  <div class="cover-author">
+    <p>Diego Saavedra García</p>
+  </div>
+  
+  <div class="cover-branding">
+    <div class="cover-iscd">
+      <img src="images/iscd-logo.svg" alt="ISCD" style="max-height: 40px;">
+      <span>Instituto Superior de Ciberseguridad y Defensa</span>
+    </div>
+    <div class="cover-gentleman">
+      <img src="images/gentleman-logo.svg" alt="Gentleman Programming" style="max-height: 50px;">
+      <span>Gentleman Programming</span>
+    </div>
+  </div>
+  
+  <div class="cover-year">2026</div>
+</div>
+
+<style>
+.cover-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.cover-logo {
+  margin-bottom: 2rem;
+}
+
+.cover-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #e63946;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 3px 3px 0px #1d3557;
+}
+
+.cover-subtitle {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #457b9d;
+  margin: 0.5rem 0 2rem 0;
+  font-style: italic;
+}
+
+.cover-author {
+  margin-bottom: 3rem;
+}
+
+.cover-author p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #f1faee;
+  margin: 0;
+}
+
+.cover-branding {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.cover-iscd, .cover-gentleman {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #a8dadc;
+  font-size: 0.9rem;
+}
+
+.cover-year {
+  font-size: 1.2rem;
+  color: #a8dadc;
+  border-top: 2px solid #457b9d;
+  padding-top: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+@media print {
+  .cover-container {
+    min-height: 90vh;
+  }
+}
+</style>
+```
