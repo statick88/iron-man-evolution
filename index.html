@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Diego Saavedra García">
+<meta name="description" content="Curso de desarrollo con Inteligencia Artificial como Tony Stark: desde scripts básicos hasta Software Driver Development">
+
+<title>Iron Man Evolution: De la Cueva al Nanotech</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./contenido/prerrequisitos.html" rel="next">
+<link href="./agradecimientos.html" rel="prev">
+<link href="./images/iron-man-evolution.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-40edc06b30f33edb86836dc564429733.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-43e5b7cf438b00317c3a8f91b9fb1666.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Iron Man Evolution: De la Cueva al Nanotech</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/iron-man-evolution.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/iron-man-evolution.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Iron Man Evolution: De la Cueva al Nanotech</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./iron-man-evolution.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./iron-man-evolution.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./portada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Iron Man Evolution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dedicatoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dedicatoria</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prefacio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./agradecimientos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Agradecimientos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Iron Man Evolution: De la Cueva al Nanotech</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/prerrequisitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Antes de Empezar: Prerrequisitos y Warm-up</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">🛠️ Tu Arsenal: Herramientas de IA</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/resumen-herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Resumen: Stack Completo de Herramientas IA</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/unidad2-opencode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Unidad 2: OpenCode - Tu Primer Agente de IA</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/unidad3-claude-code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Unidad 3: Claude Code — Tu JARVIS Potente</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/unidad4-gemini-cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Unidad 4: Gemini CLI — Tu JARVIS Gratis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/unidad5-kilocode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Unidad 5: KiloCode — Orquestación Multi-Agente</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/unidad6-kiro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Unidad 6: Kiro — Spec-Driven Development</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/unidad7-amp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Unidad 7: Amp — Asistente Ligero</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">🏚️ Nivel 1: El Demo en la Cueva</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/nivel1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nivel 1: La Cueva</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/lab-nivel1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Lab 1: Conversación con JARVIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/boss-fight1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Boss Fight 1: Escape de la Cueva</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">⚙️ Nivel 2: El Mark I</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/nivel2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Nivel 2: El Mark I</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/lab-nivel2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Lab 2: El Mark I - Prototipo Funcional</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/boss-fight2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Boss Fight 2: Mark I vs Mark II</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">🔧 Nivel 3: De la Chatarra al Artefacto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/nivel3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nivel 3: El Mark III</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/lab-nivel3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Lab 3: El Mark III - Tu Primera Armadura Real</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/boss-fight3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Boss Fight 3: La Torre Stark</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">🧠 Nivel 4: El Jarvis Primordial</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/nivel4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Nivel 4: JARVIS Avanzado</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/lab-nivel4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Lab 4: J.A.R.V.I.S. - Asistente Inteligente</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/boss-fight4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Boss Fight 4: El Jarvis Protocol</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">🛡️ Nivel 5: De Agente a Arquitecto</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/nivel5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Nivel 5: Ultron</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/lab-nivel5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Lab 5: Ultron - SDD, Multi-Agente y Ética</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/boss-fight5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Boss Fight 5: El Escudo de Capitán América</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">🧬 Nivel 6: El Nanotech Viviente</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contenido/nivel6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Nivel 6: El Nanotech</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/lab-nivel6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Lab 6: El Nanotech - Orquestación Avanzada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/boss-fight6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Boss Fight 6: El Ecosistema Stark</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">📝 Quizzes y Evaluaciones</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quizzes/unidad1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Quiz 1: El Despertar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quizzes/unidad2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Quiz 2: Contexto es Rey</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quizzes/unidad3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Quiz 3: El Piloto</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quizzes/unidad4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Quiz 4: Refinamiento</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quizzes/unidad5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Quiz 5: Límites</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quizzes/unidad6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Quiz 6: Síntesis</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">📚 Referencias y Recursos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos/prd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">PRD - Product Requirements Document</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos/sdd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">SDD - Spec-Driven Development</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos/engram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Engram - Memoria Persistente</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos/mcp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">MCP - Model Context Protocol</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos/skills.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Skills - Habilidades Especializadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos/herramientas-ia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Herramientas de Asistentes de IA para Desarrollo (2026)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos/gentle-ai-stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Gentle AI Stack</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">ℹ️ Información</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Acerca del Autor</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./license.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Licencia</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#iron-man-evolution" id="toc-iron-man-evolution" class="nav-link active" data-scroll-target="#iron-man-evolution"><span class="header-section-number">1</span> 🦾 Iron Man Evolution</a>
+  <ul class="collapse">
+  <li><a href="#desarrollo-con-ia-de-la-cueva-al-nanotech" id="toc-desarrollo-con-ia-de-la-cueva-al-nanotech" class="nav-link" data-scroll-target="#desarrollo-con-ia-de-la-cueva-al-nanotech"><span class="header-section-number">1.1</span> <strong>Desarrollo con IA: De la Cueva al Nanotech</strong></a></li>
+  <li><a href="#la-trama-completa" id="toc-la-trama-completa" class="nav-link" data-scroll-target="#la-trama-completa"><span class="header-section-number">1.2</span> 🎬 <strong>La Trama Completa</strong></a></li>
+  <li><a href="#sistema-de-progresión-gamificación" id="toc-sistema-de-progresión-gamificación" class="nav-link" data-scroll-target="#sistema-de-progresión-gamificación"><span class="header-section-number">1.3</span> 🎮 <strong>Sistema de Progresión (Gamificación)</strong></a>
+  <ul class="collapse">
+  <li><a href="#niveles-del-juego" id="toc-niveles-del-juego" class="nav-link" data-scroll-target="#niveles-del-juego"><span class="header-section-number">1.3.1</span> <strong>Niveles del Juego</strong></a></li>
+  </ul></li>
+  <li><a href="#metodología-aprender-como-tony-stark" id="toc-metodología-aprender-como-tony-stark" class="nav-link" data-scroll-target="#metodología-aprender-como-tony-stark"><span class="header-section-number">1.4</span> 🧠 <strong>Metodología: Aprender como Tony Stark</strong></a>
+  <ul class="collapse">
+  <li><a href="#principio-fundamental" id="toc-principio-fundamental" class="nav-link" data-scroll-target="#principio-fundamental"><span class="header-section-number">1.4.1</span> <strong>Principio Fundamental</strong></a></li>
+  <li><a href="#filosofía-de-enseñanza" id="toc-filosofía-de-enseñanza" class="nav-link" data-scroll-target="#filosofía-de-enseñanza"><span class="header-section-number">1.4.2</span> <strong>Filosofía de Enseñanza</strong></a></li>
+  </ul></li>
+  <li><a href="#stack-tecnológico-gentle-ai-stack" id="toc-stack-tecnológico-gentle-ai-stack" class="nav-link" data-scroll-target="#stack-tecnológico-gentle-ai-stack"><span class="header-section-number">1.5</span> 🔧 <strong>Stack Tecnológico (Gentle AI Stack)</strong></a>
+  <ul class="collapse">
+  <li><a href="#distinción-importante-asistentes-vs-agentes" id="toc-distinción-importante-asistentes-vs-agentes" class="nav-link" data-scroll-target="#distinción-importante-asistentes-vs-agentes"><span class="header-section-number">1.5.1</span> <strong>⚠️ Distinción Importante: Asistentes vs Agentes</strong></a></li>
+  <li><a href="#arquitectura-del-gentle-ai-stack" id="toc-arquitectura-del-gentle-ai-stack" class="nav-link" data-scroll-target="#arquitectura-del-gentle-ai-stack"><span class="header-section-number">1.5.2</span> <strong>Arquitectura del Gentle AI Stack</strong></a></li>
+  <li><a href="#componentes-del-stack" id="toc-componentes-del-stack" class="nav-link" data-scroll-target="#componentes-del-stack"><span class="header-section-number">1.5.3</span> <strong>Componentes del Stack</strong></a></li>
+  </ul></li>
+  <li><a href="#sistema-de-xp-y-logros" id="toc-sistema-de-xp-y-logros" class="nav-link" data-scroll-target="#sistema-de-xp-y-logros"><span class="header-section-number">1.6</span> 📊 <strong>Sistema de XP y Logros</strong></a>
+  <ul class="collapse">
+  <li><a href="#experiencia-xp" id="toc-experiencia-xp" class="nav-link" data-scroll-target="#experiencia-xp"><span class="header-section-number">1.6.1</span> <strong>Experiencia (XP)</strong></a></li>
+  <li><a href="#logros-desbloqueables" id="toc-logros-desbloqueables" class="nav-link" data-scroll-target="#logros-desbloqueables"><span class="header-section-number">1.6.2</span> <strong>Logros Desbloqueables</strong></a></li>
+  </ul></li>
+  <li><a href="#tu-arsenal-de-herramientas-nuevo" id="toc-tu-arsenal-de-herramientas-nuevo" class="nav-link" data-scroll-target="#tu-arsenal-de-herramientas-nuevo"><span class="header-section-number">1.7</span> 🛠️ <strong>Tu Arsenal de Herramientas (NUEVO)</strong></a>
+  <ul class="collapse">
+  <li><a href="#antes-de-empezar-instala-tus-herramientas" id="toc-antes-de-empezar-instala-tus-herramientas" class="nav-link" data-scroll-target="#antes-de-empezar-instala-tus-herramientas"><span class="header-section-number">1.7.1</span> <strong>Antes de empezar: Instala tus herramientas</strong></a></li>
+  <li><a href="#tu-primer-paso-en-herramientas" id="toc-tu-primer-paso-en-herramientas" class="nav-link" data-scroll-target="#tu-primer-paso-en-herramientas"><span class="header-section-number">1.7.2</span> <strong>Tu Primer Paso en Herramientas</strong></a></li>
+  </ul></li>
+  <li><a href="#laboratorios-prácticos" id="toc-laboratorios-prácticos" class="nav-link" data-scroll-target="#laboratorios-prácticos"><span class="header-section-number">1.8</span> 🧪 <strong>Laboratorios Prácticos</strong></a>
+  <ul class="collapse">
+  <li><a href="#cada-nivel-incluye" id="toc-cada-nivel-incluye" class="nav-link" data-scroll-target="#cada-nivel-incluye"><span class="header-section-number">1.8.1</span> <strong>Cada Nivel Incluye</strong></a></li>
+  <li><a href="#proyecto-final" id="toc-proyecto-final" class="nav-link" data-scroll-target="#proyecto-final"><span class="header-section-number">1.8.2</span> <strong>Proyecto Final</strong></a></li>
+  </ul></li>
+  <li><a href="#requisitos-previos-menos-de-lo-que-crees" id="toc-requisitos-previos-menos-de-lo-que-crees" class="nav-link" data-scroll-target="#requisitos-previos-menos-de-lo-que-crees"><span class="header-section-number">1.9</span> 📋 <strong>Requisitos Previos (¡Menos de lo que Crees!)</strong></a>
+  <ul class="collapse">
+  <li><a href="#prerrequisitos-mínimos-seguro-que-los-tienes" id="toc-prerrequisitos-mínimos-seguro-que-los-tienes" class="nav-link" data-scroll-target="#prerrequisitos-mínimos-seguro-que-los-tienes"><span class="header-section-number">1.9.1</span> <strong>✅ Prerrequisitos Mínimos (¡Seguro que los tienes!)</strong></a></li>
+  <li><a href="#no-sabes-programar-no-importa" id="toc-no-sabes-programar-no-importa" class="nav-link" data-scroll-target="#no-sabes-programar-no-importa"><span class="header-section-number">1.9.2</span> <strong>🤔 ¿No sabes programar? ¡No importa!</strong></a></li>
+  <li><a href="#ya-sabes-programar" id="toc-ya-sabes-programar" class="nav-link" data-scroll-target="#ya-sabes-programar"><span class="header-section-number">1.9.3</span> <strong>¿Ya sabes programar?</strong></a></li>
+  <li><a href="#verifica-si-estás-listo" id="toc-verifica-si-estás-listo" class="nav-link" data-scroll-target="#verifica-si-estás-listo"><span class="header-section-number">1.9.4</span> <strong>🔍 Verifica si Estás Listo</strong></a></li>
+  <li><a href="#herramientas-necesarias-gratis" id="toc-herramientas-necesarias-gratis" class="nav-link" data-scroll-target="#herramientas-necesarias-gratis"><span class="header-section-number">1.9.5</span> <strong>Herramientas Necesarias (Gratis)</strong></a></li>
+  <li><a href="#asistentes-de-ia-que-dominarás" id="toc-asistentes-de-ia-que-dominarás" class="nav-link" data-scroll-target="#asistentes-de-ia-que-dominarás"><span class="header-section-number">1.9.6</span> <strong>Asistentes de IA que Dominarás</strong></a></li>
+  <li><a href="#herramientas-que-instalarás-guiado" id="toc-herramientas-que-instalarás-guiado" class="nav-link" data-scroll-target="#herramientas-que-instalarás-guiado"><span class="header-section-number">1.9.7</span> <strong>Herramientas que Instalarás (guiado)</strong></a></li>
+  </ul></li>
+  <li><a href="#comienza-tu-evolución" id="toc-comienza-tu-evolución" class="nav-link" data-scroll-target="#comienza-tu-evolución"><span class="header-section-number">1.10</span> 🚀 <strong>Comienza tu Evolución</strong></a>
+  <ul class="collapse">
+  <li><a href="#ruta-de-aprendizaje" id="toc-ruta-de-aprendizaje" class="nav-link" data-scroll-target="#ruta-de-aprendizaje"><span class="header-section-number">1.10.1</span> <strong>Ruta de Aprendizaje</strong></a></li>
+  <li><a href="#tu-primer-paso" id="toc-tu-primer-paso" class="nav-link" data-scroll-target="#tu-primer-paso"><span class="header-section-number">1.10.2</span> <strong>Tu Primer Paso</strong></a></li>
+  </ul></li>
+  <li><a href="#recursos-adicionales" id="toc-recursos-adicionales" class="nav-link" data-scroll-target="#recursos-adicionales"><span class="header-section-number">1.11</span> 📚 <strong>Recursos Adicionales</strong></a>
+  <ul class="collapse">
+  <li><a href="#comunidad" id="toc-comunidad" class="nav-link" data-scroll-target="#comunidad"><span class="header-section-number">1.11.1</span> <strong>Comunidad</strong></a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">1.11.2</span> <strong>Referencias</strong></a></li>
+  </ul></li>
+  <li><a href="#acerca-del-autor" id="toc-acerca-del-autor" class="nav-link" data-scroll-target="#acerca-del-autor"><span class="header-section-number">1.12</span> 📖 <strong>Acerca del Autor</strong></a></li>
+  <li><a href="#objetivo-final" id="toc-objetivo-final" class="nav-link" data-scroll-target="#objetivo-final"><span class="header-section-number">1.13</span> 🎯 <strong>Objetivo Final</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Iron Man Evolution: De la Cueva al Nanotech</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+<div>
+  <div class="description">
+    Curso de desarrollo con Inteligencia Artificial como Tony Stark: desde scripts básicos hasta Software Driver Development
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Diego Saavedra García </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Mar 23, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="iron-man-evolution" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 🦾 Iron Man Evolution</h1>
+<section id="desarrollo-con-ia-de-la-cueva-al-nanotech" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="desarrollo-con-ia-de-la-cueva-al-nanotech"><span class="header-section-number">1.1</span> <strong>Desarrollo con IA: De la Cueva al Nanotech</strong></h2>
+<p><strong>Duración</strong>: 20 horas | <strong>Modalidad</strong>: Autoestudio | <strong>Nivel</strong>: Principiante a Experto<br>
+<strong>Metodología</strong>: Aprendizaje por niveles como un videojuego<br>
+<strong>Inspiración</strong>: La saga completa de Iron Man (2008-2019)</p>
+<hr>
+</section>
+<section id="la-trama-completa" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="la-trama-completa"><span class="header-section-number">1.2</span> 🎬 <strong>La Trama Completa</strong></h2>
+<blockquote class="blockquote">
+<p><em>“Siempre supe que moriría en paz, sabiendo que mis hijos estarían bien. Pero sabes… ahora, quiero hacer lo que tengo que hacer, sin que ellos sepan que soy el único capaz de hacerlo.”</em> — Tony Stark, Avengers: Endgame</p>
+</blockquote>
+<p><strong>Iron Man Evolution</strong> no es solo un curso. Es una <strong>experiencia narrativa</strong> donde cada nivel corresponde a un momento crucial en la evolución de Tony Stark desde un genio millonario atrapado en una cueva hasta el hombre que salvó el universo con tecnología nanotech.</p>
+<hr>
+</section>
+<section id="sistema-de-progresión-gamificación" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sistema-de-progresión-gamificación"><span class="header-section-number">1.3</span> 🎮 <strong>Sistema de Progresión (Gamificación)</strong></h2>
+<section id="niveles-del-juego" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="niveles-del-juego"><span class="header-section-number">1.3.1</span> <strong>Niveles del Juego</strong></h3>
+<p>Cada nivel tiene: - 🎬 <strong>Escena de Iron Man</strong> — La película que inspires - 🎯 <strong>Objetivos</strong> — Qué aprenderás - 🔬 <strong>Laboratorio</strong> — Ejercicios prácticos - 🏆 <strong>Logro</strong> — Algo que desbloquear - 💀 <strong>Boss Fight</strong> — Reto final del nivel</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 20%">
+<col style="width: 38%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nivel</th>
+<th>Iron Man</th>
+<th>Habilidad Técnica</th>
+<th>Tecnologías</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1</strong></td>
+<td>🕳️ <strong>El Demo en la Cueva</strong></td>
+<td>Fundamentos de IA</td>
+<td>Prompts, tokens, context window</td>
+</tr>
+<tr class="even">
+<td><strong>2</strong></td>
+<td>⚙️ <strong>El Mark I</strong></td>
+<td>Context Engineering</td>
+<td>AGENTS.md, convenciones, reglas</td>
+</tr>
+<tr class="odd">
+<td><strong>3</strong></td>
+<td>🦾 <strong>El Mark III</strong></td>
+<td>Agentes Básicos</td>
+<td>Claude Code, loops, subagentes</td>
+</tr>
+<tr class="even">
+<td><strong>4</strong></td>
+<td>🤖 <strong>JARVIS Avanzado</strong></td>
+<td>Memoria &amp; Herramientas</td>
+<td>Engram, MCP, Skills</td>
+</tr>
+<tr class="odd">
+<td><strong>5</strong></td>
+<td>🔴 <strong>Ultron</strong></td>
+<td>Orquestación Multi-Agente</td>
+<td>SDD, ética, control humano</td>
+</tr>
+<tr class="even">
+<td><strong>6</strong></td>
+<td>✨ <strong>El Nanotech</strong></td>
+<td>Producción Enterprise</td>
+<td>Gentle AI Stack, CI/CD, seguridad</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="metodología-aprender-como-tony-stark" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="metodología-aprender-como-tony-stark"><span class="header-section-number">1.4</span> 🧠 <strong>Metodología: Aprender como Tony Stark</strong></h2>
+<section id="principio-fundamental" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="principio-fundamental"><span class="header-section-number">1.4.1</span> <strong>Principio Fundamental</strong></h3>
+<blockquote class="blockquote">
+<p><em>“La armadura me hace más fuerte. J.A.R.V.I.S. me hace más inteligente. Juntos, somos imparables.”</em></p>
+</blockquote>
+<p><strong>Tu eres Tony Stark.</strong> La IA es tu J.A.R.V.I.S.<br>
+<strong>Tú construyes.</strong> La IA amplifica.<br>
+<strong>Tú decides.</strong> La IA ejecuta.</p>
+</section>
+<section id="filosofía-de-enseñanza" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="filosofía-de-enseñanza"><span class="header-section-number">1.4.2</span> <strong>Filosofía de Enseñanza</strong></h3>
+<ol type="1">
+<li><strong>Aprender Haciendo</strong> — 70% práctica, 30% teoría</li>
+<li><strong>Progresión Natural</strong> — De lo simple a lo complejo</li>
+<li><strong>Contexto Real</strong> — Proyectos que importan</li>
+<li><strong>Reflexión Constante</strong> — ¿Por qué funciona esto?</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="stack-tecnológico-gentle-ai-stack" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="stack-tecnológico-gentle-ai-stack"><span class="header-section-number">1.5</span> 🔧 <strong>Stack Tecnológico (Gentle AI Stack)</strong></h2>
+<section id="distinción-importante-asistentes-vs-agentes" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="distinción-importante-asistentes-vs-agentes"><span class="header-section-number">1.5.1</span> <strong>⚠️ Distinción Importante: Asistentes vs Agentes</strong></h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 37%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Ejemplos</th>
+<th>Capacidad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Asistentes</strong></td>
+<td>Claude Chat, ChatGPT, Gemini</td>
+<td>Conversación, sugerencias, análisis</td>
+</tr>
+<tr class="even">
+<td><strong>Agentes</strong></td>
+<td>Claude Code, OpenCode, Cursor</td>
+<td>Acción directa: escribir código, crear archivos, ejecutar comandos</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>💡 <strong>Un asistente te dice QUÉ hacer. Un agente LO HACE por ti.</strong></p>
+</blockquote>
+</section>
+<section id="arquitectura-del-gentle-ai-stack" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="arquitectura-del-gentle-ai-stack"><span class="header-section-number">1.5.2</span> <strong>Arquitectura del Gentle AI Stack</strong></h3>
+<pre><code>┌──────────────────────────────────────────────────────────────────────────────┐
+│                         🖥️ TU COMPUTADORA                                    │
+│                                    │                                          │
+│                                    ▼                                          │
+│  ┌────────────────────────────────────────────────────────────────────────┐  │
+│  │                      ⚡ GENTLE AI STACK                               │  │
+│  │                                                                        │  │
+│  │   🤖 AGENTES      🧠 MEMORIA       🔗 MCP          📋 SDD            │  │
+│  │   (Acción)        (Engram)      (Conexión)      (Método)           │  │
+│  │   ─────────       ─────────      ─────────       ─────────           │  │
+│  │   • Claude Code   • Engram      • GitHub        • Spec             │  │
+│  │   • OpenCode     • SQLite      • Notion        • Design            │  │
+│  │   • Cursor       • Patterns    • Slack         • Tasks             │  │
+│  │                                 • Base de datos • Code             │  │
+│  │                                                                        │  │
+│  └────────────────────────────────────────────────────────────────────────┘  │
+│                                                                             │
+│  ┌────────────────────────────────────────────────────────────────────────┐  │
+│  │  📖 SKILLS (Conocimiento Modular)                                     │  │
+│  │   • SKILL.md + Scripts    • 50+ patterns    • Carga automática       │  │
+│  └────────────────────────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="componentes-del-stack" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="componentes-del-stack"><span class="header-section-number">1.5.3</span> <strong>Componentes del Stack</strong></h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 36%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Componente</th>
+<th>Tecnología</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Agentes</strong></td>
+<td>Claude Code, OpenCode, Cursor</td>
+<td>Ejecutan acciones en tu código</td>
+</tr>
+<tr class="even">
+<td><strong>Memoria</strong></td>
+<td>Engram (SQLite + FTS5)</td>
+<td>Recuerdan decisiones y patrones</td>
+</tr>
+<tr class="odd">
+<td><strong>Conexión</strong></td>
+<td>MCP Protocol</td>
+<td>Conectan con GitHub, Notion, Slack</td>
+</tr>
+<tr class="even">
+<td><strong>Método</strong></td>
+<td>SDD (Spec-Driven Dev)</td>
+<td>Estructuran el desarrollo</td>
+</tr>
+<tr class="odd">
+<td><strong>Skills</strong></td>
+<td>SKILL.md + Scripts</td>
+<td>Modularizan conocimiento</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Calidad</strong>: TDD, Clean Code, Clean Architecture</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="sistema-de-xp-y-logros" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="sistema-de-xp-y-logros"><span class="header-section-number">1.6</span> 📊 <strong>Sistema de XP y Logros</strong></h2>
+<section id="experiencia-xp" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="experiencia-xp"><span class="header-section-number">1.6.1</span> <strong>Experiencia (XP)</strong></h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Actividad</th>
+<th>XP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Completar un lab</td>
+<td>100 XP</td>
+</tr>
+<tr class="even">
+<td>Boss Fight superado</td>
+<td>250 XP</td>
+</tr>
+<tr class="odd">
+<td>Proyecto final</td>
+<td>1000 XP</td>
+</tr>
+<tr class="even">
+<td>Comunidad (ayudar a otros)</td>
+<td>50 XP</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="logros-desbloqueables" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="logros-desbloqueables"><span class="header-section-number">1.6.2</span> <strong>Logros Desbloqueables</strong></h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Logro</th>
+<th>Nombre</th>
+<th>Requisito</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🥉</td>
+<td><strong>Survivor</strong></td>
+<td>Completar Nivel 1</td>
+</tr>
+<tr class="even">
+<td>🥈</td>
+<td><strong>Architect</strong></td>
+<td>Crear tu primer AGENTS.md</td>
+</tr>
+<tr class="odd">
+<td>🥇</td>
+<td><strong>Pilot</strong></td>
+<td>Ejecutar tu primer agente</td>
+</tr>
+<tr class="even">
+<td>💎</td>
+<td><strong>Genius</strong></td>
+<td>Implementar Engram</td>
+</tr>
+<tr class="odd">
+<td>🔥</td>
+<td><strong>Director</strong></td>
+<td>Orquestar 3+ agentes</td>
+</tr>
+<tr class="even">
+<td>👑</td>
+<td><strong>Innovator</strong></td>
+<td>Completar todos los niveles</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="tu-arsenal-de-herramientas-nuevo" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="tu-arsenal-de-herramientas-nuevo"><span class="header-section-number">1.7</span> 🛠️ <strong>Tu Arsenal de Herramientas (NUEVO)</strong></h2>
+<section id="antes-de-empezar-instala-tus-herramientas" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="antes-de-empezar-instala-tus-herramientas"><span class="header-section-number">1.7.1</span> <strong>Antes de empezar: Instala tus herramientas</strong></h3>
+<p>Esta sección es <strong>OBLIGATORIA</strong> antes de continuar con los niveles. Aquí aprenderás a instalar y configurar cada herramienta de IA:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 29%">
+<col style="width: 34%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Unidad</th>
+<th>Herramienta</th>
+<th>Qué aprenderás</th>
+<th>Tiempo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Resumen</strong></td>
+<td>Todas</td>
+<td>Comparativa y cuándo usar cada una</td>
+<td>15 min</td>
+</tr>
+<tr class="even">
+<td><strong>Unidad 2</strong></td>
+<td>OpenCode</td>
+<td>Instalación, configuración, AGENTS.md</td>
+<td>45 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad 3</strong></td>
+<td>Claude Code</td>
+<td>Subagentes, debugging profundo</td>
+<td>45 min</td>
+</tr>
+<tr class="even">
+<td><strong>Unidad 4</strong></td>
+<td>Gemini CLI</td>
+<td>Uso gratis, configuración</td>
+<td>30 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad 5</strong></td>
+<td>KiloCode</td>
+<td>Orchestrator Mode, multi-agente</td>
+<td>45 min</td>
+</tr>
+<tr class="even">
+<td><strong>Unidad 6</strong></td>
+<td>Kiro</td>
+<td>Spec-Driven Development, Hooks</td>
+<td>45 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad 7</strong></td>
+<td>Amp</td>
+<td>Tareas rápidas, asistente ligero</td>
+<td>20 min</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>💡 <strong>Si ya sabés qué herramienta usar</strong>, saltá directo a la unidad correspondiente. <strong>Si no sabés por dónde empezar</strong>, leé el <a href="./contenido/resumen-herramientas.html">Resumen de Herramientas</a> primero.</p>
+</blockquote>
+</section>
+<section id="tu-primer-paso-en-herramientas" class="level3" data-number="1.7.2">
+<h3 data-number="1.7.2" class="anchored" data-anchor-id="tu-primer-paso-en-herramientas"><span class="header-section-number">1.7.2</span> <strong>Tu Primer Paso en Herramientas</strong></h3>
+<p><a href="./contenido/resumen-herramientas.html">→ <strong>Resumen: Guía Comparativa de Herramientas</strong></a></p>
+<hr>
+</section>
+</section>
+<section id="laboratorios-prácticos" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="laboratorios-prácticos"><span class="header-section-number">1.8</span> 🧪 <strong>Laboratorios Prácticos</strong></h2>
+<section id="cada-nivel-incluye" class="level3" data-number="1.8.1">
+<h3 data-number="1.8.1" class="anchored" data-anchor-id="cada-nivel-incluye"><span class="header-section-number">1.8.1</span> <strong>Cada Nivel Incluye</strong></h3>
+<ol type="1">
+<li><strong>Training Lab</strong> — Ejercicios guiados paso a paso</li>
+<li><strong>Challenge Lab</strong> — Reto práctico con solución disponible</li>
+<li><strong>Boss Fight</strong> — Proyecto integrador del nivel</li>
+<li><strong>Side Quests</strong> — Ejercicios opcionales para avanzados</li>
+</ol>
+</section>
+<section id="proyecto-final" class="level3" data-number="1.8.2">
+<h3 data-number="1.8.2" class="anchored" data-anchor-id="proyecto-final"><span class="header-section-number">1.8.2</span> <strong>Proyecto Final</strong></h3>
+<p>Crearás <strong>“The Iron Legion”</strong> — un sistema multi-agente que:</p>
+<ul>
+<li><p>✅ Tiene memoria persistente (Engram)</p></li>
+<li><p>✅ Usa múltiples agentes especializados</p></li>
+<li><p>✅ Se conecta a herramientas externas vía MCP</p></li>
+<li><p>✅ Sigue metodología SDD</p></li>
+<li><p>✅ Tiene CI/CD pipeline</p></li>
+<li><p>✅ Implementa seguridad por diseño</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="requisitos-previos-menos-de-lo-que-crees" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="requisitos-previos-menos-de-lo-que-crees"><span class="header-section-number">1.9</span> 📋 <strong>Requisitos Previos (¡Menos de lo que Crees!)</strong></h2>
+<section id="prerrequisitos-mínimos-seguro-que-los-tienes" class="level3" data-number="1.9.1">
+<h3 data-number="1.9.1" class="anchored" data-anchor-id="prerrequisitos-mínimos-seguro-que-los-tienes"><span class="header-section-number">1.9.1</span> <strong>✅ Prerrequisitos Mínimos (¡Seguro que los tienes!)</strong></h3>
+<ul>
+<li>✅ Saber encender una computadora</li>
+<li>✅ Saber usar un navegador web (Chrome, Firefox, etc.)</li>
+<li>✅ Saber copiar y pegar texto</li>
+<li>✅ Saber crear una cuenta de email</li>
+<li>✅ Saber leer y escribir en español</li>
+</ul>
+</section>
+<section id="no-sabes-programar-no-importa" class="level3" data-number="1.9.2">
+<h3 data-number="1.9.2" class="anchored" data-anchor-id="no-sabes-programar-no-importa"><span class="header-section-number">1.9.2</span> <strong>🤔 ¿No sabes programar? ¡No importa!</strong></h3>
+<p>Este curso está diseñado <strong>desde cero absoluto</strong>. No asumimos que sepas:</p>
+<ul>
+<li><p>❌ Programación (te enseñamos desde lo básico)</p></li>
+<li><p>❌ Terminal/consola (te guiamos paso a paso)</p></li>
+<li><p>❌ Git o control de versiones (lo explicamos cuando lo necesites)</p></li>
+</ul>
+</section>
+<section id="ya-sabes-programar" class="level3" data-number="1.9.3">
+<h3 data-number="1.9.3" class="anchored" data-anchor-id="ya-sabes-programar"><span class="header-section-number">1.9.3</span> <strong>¿Ya sabes programar?</strong></h3>
+<p>Salta al <a href="./contenido/nivel2.html">Nivel 2</a> después de revisar los prerrequisitos.</p>
+</section>
+<section id="verifica-si-estás-listo" class="level3" data-number="1.9.4">
+<h3 data-number="1.9.4" class="anchored" data-anchor-id="verifica-si-estás-listo"><span class="header-section-number">1.9.4</span> <strong>🔍 Verifica si Estás Listo</strong></h3>
+<p>Antes de empezar, completa el <strong><a href="./contenido/prerrequisitos.html">Test de Prerrequisitos</a></strong> — ¡toma solo 5 minutos!</p>
+</section>
+<section id="herramientas-necesarias-gratis" class="level3" data-number="1.9.5">
+<h3 data-number="1.9.5" class="anchored" data-anchor-id="herramientas-necesarias-gratis"><span class="header-section-number">1.9.5</span> <strong>Herramientas Necesarias (Gratis)</strong></h3>
+<ul>
+<li>🌐 <strong>Navegador web</strong> (Chrome, Firefox, etc.) — ¡ya lo tienes!</li>
+<li>📧 <strong>Cuenta de email</strong> (Gmail, Outlook, etc.) — ¡ya la tienes!</li>
+<li>📝 <strong>Editor de código</strong>: VS Code (recomendado, gratuito)</li>
+<li>🤖 <strong>Cuenta en al menos una IA</strong>: Claude, ChatGPT, Gemini, etc.</li>
+</ul>
+</section>
+<section id="asistentes-de-ia-que-dominarás" class="level3" data-number="1.9.6">
+<h3 data-number="1.9.6" class="anchored" data-anchor-id="asistentes-de-ia-que-dominarás"><span class="header-section-number">1.9.6</span> <strong>Asistentes de IA que Dominarás</strong></h3>
+<p>En este curso aprenderás a usar múltiples asistentes de IA para desarrollo:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 9%">
+<col style="width: 19%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Herramienta</th>
+<th>Tipo</th>
+<th>Mejor para</th>
+<th>¿Necesitas experiencia previa?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>OpenCode</strong></td>
+<td>Terminal Agent</td>
+<td>Flexibilidad, 75+ proveedores</td>
+<td>❌ No</td>
+</tr>
+<tr class="even">
+<td><strong>KiloCode</strong></td>
+<td>IDE + CLI</td>
+<td>Multi-modelo (500+), orquestación</td>
+<td>❌ No</td>
+</tr>
+<tr class="odd">
+<td><strong>Claude Code</strong></td>
+<td>Terminal Agent</td>
+<td>Debugging complejo, 1M contexto</td>
+<td>❌ No</td>
+</tr>
+<tr class="even">
+<td><strong>Gemini CLI</strong></td>
+<td>Terminal Agent</td>
+<td>Coste cero, 1M contexto</td>
+<td>❌ No</td>
+</tr>
+<tr class="odd">
+<td><strong>Kiro</strong></td>
+<td>Spec-Driven IDE</td>
+<td>Desarrollo dirigido por especificaciones</td>
+<td>❌ No</td>
+</tr>
+<tr class="even">
+<td><strong>Amp</strong></td>
+<td>Terminal Agent</td>
+<td>Tareas rápidas, ligero</td>
+<td>❌ No</td>
+</tr>
+<tr class="odd">
+<td><strong>GitHub Copilot</strong></td>
+<td>IDE Plugin</td>
+<td>Integración GitHub, Enterprise</td>
+<td>❌ No</td>
+</tr>
+<tr class="even">
+<td><strong>Codex CLI</strong></td>
+<td>Terminal Agent</td>
+<td>Código OpenAI, agente local</td>
+<td>❌ No</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>💡 <strong>No necesitas experiencia previa</strong> — te enseñamos desde cómo abrir la terminal hasta orquestar sistemas multi-agente.</p>
+</blockquote>
+</section>
+<section id="herramientas-que-instalarás-guiado" class="level3" data-number="1.9.7">
+<h3 data-number="1.9.7" class="anchored" data-anchor-id="herramientas-que-instalarás-guiado"><span class="header-section-number">1.9.7</span> <strong>Herramientas que Instalarás (guiado)</strong></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gentle AI Stack (instalador automático)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/Gentleman-Programming/gentle-ai/main/scripts/install.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Agentes</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Claude Code</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> OpenCode</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Cursor</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Memoria</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Engram <span class="er">(</span><span class="ex">Go</span> binary<span class="kw">)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Herramientas de desarrollo</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Git</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Docker <span class="er">(</span><span class="ex">opcional,</span> Nivel 6<span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="comienza-tu-evolución" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="comienza-tu-evolución"><span class="header-section-number">1.10</span> 🚀 <strong>Comienza tu Evolución</strong></h2>
+<section id="ruta-de-aprendizaje" class="level3" data-number="1.10.1">
+<h3 data-number="1.10.1" class="anchored" data-anchor-id="ruta-de-aprendizaje"><span class="header-section-number">1.10.1</span> <strong>Ruta de Aprendizaje</strong></h3>
+<pre><code>1️⃣  El Demo en la Cueva ──── 2️⃣  El Mark I ──── 3️⃣  El Mark III
+    │                           │                   │
+    ▼                           ▼                   ▼
+[Supervivencia]           [Prototipo]         [Combate Real]
+    │                           │                   │
+    └───────────────────────────┴───────────────────┘
+                                │
+4️⃣  JARVIS Avanzado ──── 5️⃣  Ultron ──── 6️⃣  El Nanotech
+    │                       │               │
+    ▼                       ▼               ▼
+[Memoria]              [Poder]         [Producción]
+    │                       │               │
+    └───────────────────────┴───────────────┘
+                                │
+                         👑 Innovator
+                    (Proyecto Final Completado)</code></pre>
+</section>
+<section id="tu-primer-paso" class="level3" data-number="1.10.2">
+<h3 data-number="1.10.2" class="anchored" data-anchor-id="tu-primer-paso"><span class="header-section-number">1.10.2</span> <strong>Tu Primer Paso</strong></h3>
+<p><a href="./contenido/nivel1.html">→ <strong>Nivel 1: El Demo en la Cueva</strong></a></p>
+<hr>
+</section>
+</section>
+<section id="recursos-adicionales" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="recursos-adicionales"><span class="header-section-number">1.11</span> 📚 <strong>Recursos Adicionales</strong></h2>
+<section id="comunidad" class="level3" data-number="1.11.1">
+<h3 data-number="1.11.1" class="anchored" data-anchor-id="comunidad"><span class="header-section-number">1.11.1</span> <strong>Comunidad</strong></h3>
+<ul>
+<li>💬 Discord: Stark Industries Dev Community</li>
+<li>🐦 Twitter: #IronManEvolution</li>
+<li>📧 Soporte: tony@starkindustries.dev</li>
+</ul>
+</section>
+<section id="referencias" class="level3" data-number="1.11.2">
+<h3 data-number="1.11.2" class="anchored" data-anchor-id="referencias"><span class="header-section-number">1.11.2</span> <strong>Referencias</strong></h3>
+<ul>
+<li><a href="https://github.com/Gentleman-Programming/gentle-ai">Gentle AI Stack</a></li>
+<li><a href="https://github.com/Gentleman-Programming/Gentleman-Skills">Gentleman Skills</a></li>
+<li><a href="https://www.youtube.com/watch?v=SOxuW5K2FFY">Cómo ser Tony Stark con IA</a></li>
+<li><a href="https://modelcontextprotocol.io">Especificación MCP</a></li>
+<li><a href="https://spec-driven.dev">Spec-Driven Development</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="acerca-del-autor" class="level2" data-number="1.12">
+<h2 data-number="1.12" class="anchored" data-anchor-id="acerca-del-autor"><span class="header-section-number">1.12</span> 📖 <strong>Acerca del Autor</strong></h2>
+<p><strong>Diego Saavedra García</strong></p>
+<p>Profesor universitario (ESPE, UIDE, Abacom, Codings Academy) con experiencia en:</p>
+<ul>
+<li><p>Desarrollo FullStack</p></li>
+<li><p>Ethical Hacking y Seguridad Ofensiva</p></li>
+<li><p>Inteligencia Artificial aplicada</p></li>
+<li><p>Arquitectura de Software</p></li>
+</ul>
+<blockquote class="blockquote">
+<p><em>“No enseño tecnología. Enseño a pensar como un ingeniero que usa IA para amplificar su intelecto.”</em></p>
+</blockquote>
+<hr>
+</section>
+<section id="objetivo-final" class="level2" data-number="1.13">
+<h2 data-number="1.13" class="anchored" data-anchor-id="objetivo-final"><span class="header-section-number">1.13</span> 🎯 <strong>Objetivo Final</strong></h2>
+<p>Al completar <strong>Iron Man Evolution</strong>, serás capaz de:</p>
+<ol type="1">
+<li>✅ <strong>Diseñar</strong> sistemas multi-agente desde cero</li>
+<li>✅ <strong>Implementar</strong> memoria persistente para IA</li>
+<li>✅ <strong>Orquestar</strong> múltiples agentes especializados</li>
+<li>✅ <strong>Conectar</strong> IA con herramientas externas vía MCP</li>
+<li>✅ <strong>Aplicar</strong> metodología SDD en proyectos reales</li>
+<li>✅ <strong>Desplegar</strong> sistemas de producción robustos</li>
+<li>✅ <strong>Pensar</strong> como Tony Stark: creativo, sistemático, innovador</li>
+</ol>
+<hr>
+<p><strong>¿Estás listo para construir tu primera armadura?</strong><br>
+<a href="./contenido/nivel1.html">→ <strong>Comienza el Nivel 1</strong></a></p>
+<hr>
+<p><em>“Un hombre puede hacer lo que otro hombre puede hacer. Si no puedes hacerlo, es porque no has aprendido cómo hacerlo todavía.”</em><br>
+— Howard Stark</p>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./agradecimientos.html" class="pagination-link" aria-label="Agradecimientos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Agradecimientos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./contenido/prerrequisitos.html" class="pagination-link" aria-label="Antes de Empezar: Prerrequisitos y Warm-up">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Antes de Empezar: Prerrequisitos y Warm-up</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Iron Man Evolution: De la Cueva al Nanotech"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Diego Saavedra García"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Curso de desarrollo con Inteligencia Artificial como Tony Stark: desde scripts básicos hasta Software Driver Development"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> images/iron-man-evolution.jpg</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># 🦾 Iron Man Evolution</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Desarrollo con IA: De la Cueva al Nanotech**</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>**Duración**: 20 horas | **Modalidad**: Autoestudio | **Nivel**: Principiante a Experto  </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>**Metodología**: Aprendizaje por niveles como un videojuego  </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>**Inspiración**: La saga completa de Iron Man (2008-2019)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎬 **La Trama Completa**</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Siempre supe que moriría en paz, sabiendo que mis hijos estarían bien. Pero sabes... ahora, quiero hacer lo que tengo que hacer, sin que ellos sepan que soy el único capaz de hacerlo."*</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; — Tony Stark, Avengers: Endgame</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>**Iron Man Evolution** no es solo un curso. Es una **experiencia narrativa** donde cada nivel corresponde a un momento crucial en la evolución de Tony Stark desde un genio millonario atrapado en una cueva hasta el hombre que salvó el universo con tecnología nanotech.</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎮 **Sistema de Progresión (Gamificación)**</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Niveles del Juego**</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>Cada nivel tiene:</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>🎬 **Escena de Iron Man** — La película que inspires</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>🎯 **Objetivos** — Qué aprenderás</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>🔬 **Laboratorio** — Ejercicios prácticos</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>🏆 **Logro** — Algo que desbloquear</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>💀 **Boss Fight** — Reto final del nivel</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Nivel <span class="pp">|</span> Iron Man <span class="pp">|</span> Habilidad Técnica <span class="pp">|</span> Tecnologías <span class="pp">|</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|-------|----------|-------------------|-------------|</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **1** | 🕳️ **El Demo en la Cueva** <span class="pp">|</span> Fundamentos de IA <span class="pp">|</span> Prompts, tokens, context window <span class="pp">|</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **2** | ⚙️ **El Mark I** <span class="pp">|</span> Context Engineering <span class="pp">|</span> AGENTS.md, convenciones, reglas <span class="pp">|</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **3** | 🦾 **El Mark III** <span class="pp">|</span> Agentes Básicos <span class="pp">|</span> Claude Code, loops, subagentes <span class="pp">|</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **4** | 🤖 **JARVIS Avanzado** <span class="pp">|</span> Memoria &amp; Herramientas <span class="pp">|</span> Engram, MCP, Skills <span class="pp">|</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **5** | 🔴 **Ultron** <span class="pp">|</span> Orquestación Multi-Agente <span class="pp">|</span> SDD, ética, control humano <span class="pp">|</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **6** | ✨ **El Nanotech** <span class="pp">|</span> Producción Enterprise <span class="pp">|</span> Gentle AI Stack, CI/CD, seguridad <span class="pp">|</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧠 **Metodología: Aprender como Tony Stark**</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Principio Fundamental**</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"La armadura me hace más fuerte. J.A.R.V.I.S. me hace más inteligente. Juntos, somos imparables."*</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>**Tu eres Tony Stark.** La IA es tu J.A.R.V.I.S.  </span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>**Tú construyes.** La IA amplifica.  </span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>**Tú decides.** La IA ejecuta.</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Filosofía de Enseñanza**</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Aprender Haciendo** — 70% práctica, 30% teoría</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Progresión Natural** — De lo simple a lo complejo</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Contexto Real** — Proyectos que importan</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Reflexión Constante** — ¿Por qué funciona esto?</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🔧 **Stack Tecnológico (Gentle AI Stack)**</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### **⚠️ Distinción Importante: Asistentes vs Agentes**</span></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tipo <span class="pp">|</span> Ejemplos <span class="pp">|</span> Capacidad <span class="pp">|</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="pp">|------|----------|-----------|</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Asistentes** <span class="pp">|</span> Claude Chat, ChatGPT, Gemini <span class="pp">|</span> Conversación, sugerencias, análisis <span class="pp">|</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Agentes** <span class="pp">|</span> Claude Code, OpenCode, Cursor <span class="pp">|</span> Acción directa: escribir código, crear archivos, ejecutar comandos <span class="pp">|</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 💡 **Un asistente te dice QUÉ hacer. Un agente LO HACE por ti.**</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Arquitectura del Gentle AI Stack**</span></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="in">┌──────────────────────────────────────────────────────────────────────────────┐</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="in">│                         🖥️ TU COMPUTADORA                                    │</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="in">│                                    │                                          │</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="in">│                                    ▼                                          │</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="in">│  ┌────────────────────────────────────────────────────────────────────────┐  │</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="in">│  │                      ⚡ GENTLE AI STACK                               │  │</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="in">│  │                                                                        │  │</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="in">│  │   🤖 AGENTES      🧠 MEMORIA       🔗 MCP          📋 SDD            │  │</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="in">│  │   (Acción)        (Engram)      (Conexión)      (Método)           │  │</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="in">│  │   ─────────       ─────────      ─────────       ─────────           │  │</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="in">│  │   • Claude Code   • Engram      • GitHub        • Spec             │  │</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="in">│  │   • OpenCode     • SQLite      • Notion        • Design            │  │</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="in">│  │   • Cursor       • Patterns    • Slack         • Tasks             │  │</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="in">│  │                                 • Base de datos • Code             │  │</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="in">│  │                                                                        │  │</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="in">│  └────────────────────────────────────────────────────────────────────────┘  │</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                             │</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="in">│  ┌────────────────────────────────────────────────────────────────────────┐  │</span></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="in">│  │  📖 SKILLS (Conocimiento Modular)                                     │  │</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="in">│  │   • SKILL.md + Scripts    • 50+ patterns    • Carga automática       │  │</span></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="in">│  └────────────────────────────────────────────────────────────────────────┘  │</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="in">└──────────────────────────────────────────────────────────────────────────────┘</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Componentes del Stack**</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Componente <span class="pp">|</span> Tecnología <span class="pp">|</span> Función <span class="pp">|</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------|------------|---------|</span></span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Agentes** <span class="pp">|</span> Claude Code, OpenCode, Cursor <span class="pp">|</span> Ejecutan acciones en tu código <span class="pp">|</span></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Memoria** <span class="pp">|</span> Engram (SQLite + FTS5) <span class="pp">|</span> Recuerdan decisiones y patrones <span class="pp">|</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Conexión** <span class="pp">|</span> MCP Protocol <span class="pp">|</span> Conectan con GitHub, Notion, Slack <span class="pp">|</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Método** <span class="pp">|</span> SDD (Spec-Driven Dev) <span class="pp">|</span> Estructuran el desarrollo <span class="pp">|</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Skills** <span class="pp">|</span> SKILL.md + Scripts <span class="pp">|</span> Modularizan conocimiento <span class="pp">|</span></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Calidad**: TDD, Clean Code, Clean Architecture</span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📊 **Sistema de XP y Logros**</span></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Experiencia (XP)**</span></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Actividad <span class="pp">|</span> XP <span class="pp">|</span></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------|----|</span></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Completar un lab <span class="pp">|</span> 100 XP <span class="pp">|</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Boss Fight superado <span class="pp">|</span> 250 XP <span class="pp">|</span></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Proyecto final <span class="pp">|</span> 1000 XP <span class="pp">|</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Comunidad (ayudar a otros) <span class="pp">|</span> 50 XP <span class="pp">|</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Logros Desbloqueables**</span></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Logro <span class="pp">|</span> Nombre <span class="pp">|</span> Requisito <span class="pp">|</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="pp">|-------|--------|-----------|</span></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 🥉 <span class="pp">|</span> **Survivor** <span class="pp">|</span> Completar Nivel 1 <span class="pp">|</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 🥈 <span class="pp">|</span> **Architect** <span class="pp">|</span> Crear tu primer AGENTS.md <span class="pp">|</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 🥇 <span class="pp">|</span> **Pilot** <span class="pp">|</span> Ejecutar tu primer agente <span class="pp">|</span></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 💎 <span class="pp">|</span> **Genius** <span class="pp">|</span> Implementar Engram <span class="pp">|</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 🔥 <span class="pp">|</span> **Director** <span class="pp">|</span> Orquestar 3+ agentes <span class="pp">|</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 👑 <span class="pp">|</span> **Innovator** <span class="pp">|</span> Completar todos los niveles <span class="pp">|</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🛠️ **Tu Arsenal de Herramientas (NUEVO)**</span></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Antes de empezar: Instala tus herramientas**</span></span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>Esta sección es **OBLIGATORIA** antes de continuar con los niveles. Aquí aprenderás a instalar y configurar cada herramienta de IA:</span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Unidad <span class="pp">|</span> Herramienta <span class="pp">|</span> Qué aprenderás <span class="pp">|</span> Tiempo <span class="pp">|</span></span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------------|---------------|--------|</span></span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Resumen** <span class="pp">|</span> Todas <span class="pp">|</span> Comparativa y cuándo usar cada una <span class="pp">|</span> 15 min <span class="pp">|</span></span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Unidad 2** <span class="pp">|</span> OpenCode <span class="pp">|</span> Instalación, configuración, AGENTS.md <span class="pp">|</span> 45 min <span class="pp">|</span></span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Unidad 3** <span class="pp">|</span> Claude Code <span class="pp">|</span> Subagentes, debugging profundo <span class="pp">|</span> 45 min <span class="pp">|</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Unidad 4** <span class="pp">|</span> Gemini CLI <span class="pp">|</span> Uso gratis, configuración <span class="pp">|</span> 30 min <span class="pp">|</span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Unidad 5** <span class="pp">|</span> KiloCode <span class="pp">|</span> Orchestrator Mode, multi-agente <span class="pp">|</span> 45 min <span class="pp">|</span></span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Unidad 6** <span class="pp">|</span> Kiro <span class="pp">|</span> Spec-Driven Development, Hooks <span class="pp">|</span> 45 min <span class="pp">|</span></span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Unidad 7** <span class="pp">|</span> Amp <span class="pp">|</span> Tareas rápidas, asistente ligero <span class="pp">|</span> 20 min <span class="pp">|</span></span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 💡 **Si ya sabés qué herramienta usar**, saltá directo a la unidad correspondiente.</span></span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Si no sabés por dónde empezar**, leé el </span><span class="co">[</span><span class="ot">Resumen de Herramientas</span><span class="co">](contenido/resumen-herramientas.qmd)</span><span class="at"> primero.</span></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Tu Primer Paso en Herramientas**</span></span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">→ **Resumen: Guía Comparativa de Herramientas**</span><span class="co">](contenido/resumen-herramientas.qmd)</span></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🧪 **Laboratorios Prácticos**</span></span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Cada Nivel Incluye**</span></span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Training Lab** — Ejercicios guiados paso a paso</span>
+<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Challenge Lab** — Reto práctico con solución disponible</span>
+<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Boss Fight** — Proyecto integrador del nivel</span>
+<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Side Quests** — Ejercicios opcionales para avanzados</span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Proyecto Final**</span></span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>Crearás **"The Iron Legion"** — un sistema multi-agente que:</span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Tiene memoria persistente (Engram)</span>
+<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Usa múltiples agentes especializados</span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Se conecta a herramientas externas vía MCP</span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Sigue metodología SDD</span>
+<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Tiene CI/CD pipeline</span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Implementa seguridad por diseño</span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📋 **Requisitos Previos (¡Menos de lo que Crees!)**</span></span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a><span class="fu">### **✅ Prerrequisitos Mínimos (¡Seguro que los tienes!)**</span></span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Saber encender una computadora</span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Saber usar un navegador web (Chrome, Firefox, etc.)</span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Saber copiar y pegar texto</span>
+<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Saber crear una cuenta de email</span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ Saber leer y escribir en español</span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a><span class="fu">### **🤔 ¿No sabes programar? ¡No importa!**</span></span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a>Este curso está diseñado **desde cero absoluto**. No asumimos que sepas:</span>
+<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Programación (te enseñamos desde lo básico)</span>
+<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Terminal/consola (te guiamos paso a paso)</span>
+<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Git o control de versiones (lo explicamos cuando lo necesites)</span>
+<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a><span class="fu">### **¿Ya sabes programar?**</span></span>
+<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a>Salta al <span class="co">[</span><span class="ot">Nivel 2</span><span class="co">](contenido/nivel2.qmd)</span> después de revisar los prerrequisitos.</span>
+<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a><span class="fu">### **🔍 Verifica si Estás Listo**</span></span>
+<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a>Antes de empezar, completa el **[Test de Prerrequisitos](contenido/prerrequisitos.qmd)** — ¡toma solo 5 minutos!</span>
+<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Herramientas Necesarias (Gratis)**</span></span>
+<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>🌐 **Navegador web** (Chrome, Firefox, etc.) — ¡ya lo tienes!</span>
+<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>📧 **Cuenta de email** (Gmail, Outlook, etc.) — ¡ya la tienes!</span>
+<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>📝 **Editor de código**: VS Code (recomendado, gratuito)</span>
+<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>🤖 **Cuenta en al menos una IA**: Claude, ChatGPT, Gemini, etc.</span>
+<span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Asistentes de IA que Dominarás**</span></span>
+<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a>En este curso aprenderás a usar múltiples asistentes de IA para desarrollo:</span>
+<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Herramienta <span class="pp">|</span> Tipo <span class="pp">|</span> Mejor para <span class="pp">|</span> ¿Necesitas experiencia previa? <span class="pp">|</span></span>
+<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a><span class="pp">|-------------|------|------------|--------------------------------|</span></span>
+<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **OpenCode** <span class="pp">|</span> Terminal Agent <span class="pp">|</span> Flexibilidad, 75+ proveedores <span class="pp">|</span> ❌ No <span class="pp">|</span></span>
+<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **KiloCode** <span class="pp">|</span> IDE + CLI <span class="pp">|</span> Multi-modelo (500+), orquestación <span class="pp">|</span> ❌ No <span class="pp">|</span></span>
+<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Claude Code** <span class="pp">|</span> Terminal Agent <span class="pp">|</span> Debugging complejo, 1M contexto <span class="pp">|</span> ❌ No <span class="pp">|</span></span>
+<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Gemini CLI** <span class="pp">|</span> Terminal Agent <span class="pp">|</span> Coste cero, 1M contexto <span class="pp">|</span> ❌ No <span class="pp">|</span></span>
+<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Kiro** <span class="pp">|</span> Spec-Driven IDE <span class="pp">|</span> Desarrollo dirigido por especificaciones <span class="pp">|</span> ❌ No <span class="pp">|</span></span>
+<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Amp** <span class="pp">|</span> Terminal Agent <span class="pp">|</span> Tareas rápidas, ligero <span class="pp">|</span> ❌ No <span class="pp">|</span></span>
+<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **GitHub Copilot** <span class="pp">|</span> IDE Plugin <span class="pp">|</span> Integración GitHub, Enterprise <span class="pp">|</span> ❌ No <span class="pp">|</span></span>
+<span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Codex CLI** <span class="pp">|</span> Terminal Agent <span class="pp">|</span> Código OpenAI, agente local <span class="pp">|</span> ❌ No <span class="pp">|</span></span>
+<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 💡 **No necesitas experiencia previa** — te enseñamos desde cómo abrir la terminal hasta orquestar sistemas multi-agente.</span></span>
+<span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Herramientas que Instalarás (guiado)**</span></span>
+<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a><span class="co"># Gentle AI Stack (instalador automático)</span></span>
+<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/Gentleman-Programming/gentle-ai/main/scripts/install.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a><span class="co"># Agentes</span></span>
+<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Claude Code</span>
+<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> OpenCode</span>
+<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Cursor</span>
+<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a><span class="co"># Memoria</span></span>
+<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Engram <span class="er">(</span><span class="ex">Go</span> binary<span class="kw">)</span></span>
+<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Herramientas de desarrollo</span></span>
+<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Git</span>
+<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Docker <span class="er">(</span><span class="ex">opcional,</span> Nivel 6<span class="kw">)</span></span>
+<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🚀 **Comienza tu Evolución**</span></span>
+<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Ruta de Aprendizaje**</span></span>
+<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a><span class="in">1️⃣  El Demo en la Cueva ──── 2️⃣  El Mark I ──── 3️⃣  El Mark III</span></span>
+<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a><span class="in">    │                           │                   │</span></span>
+<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a><span class="in">    ▼                           ▼                   ▼</span></span>
+<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a><span class="in">[Supervivencia]           [Prototipo]         [Combate Real]</span></span>
+<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a><span class="in">    │                           │                   │</span></span>
+<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a><span class="in">    └───────────────────────────┴───────────────────┘</span></span>
+<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a><span class="in">                                │</span></span>
+<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a><span class="in">4️⃣  JARVIS Avanzado ──── 5️⃣  Ultron ──── 6️⃣  El Nanotech</span></span>
+<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a><span class="in">    │                       │               │</span></span>
+<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a><span class="in">    ▼                       ▼               ▼</span></span>
+<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a><span class="in">[Memoria]              [Poder]         [Producción]</span></span>
+<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a><span class="in">    │                       │               │</span></span>
+<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a><span class="in">    └───────────────────────┴───────────────┘</span></span>
+<span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a><span class="in">                                │</span></span>
+<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a><span class="in">                         👑 Innovator</span></span>
+<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a><span class="in">                    (Proyecto Final Completado)</span></span>
+<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Tu Primer Paso**</span></span>
+<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">→ **Nivel 1: El Demo en la Cueva**</span><span class="co">](contenido/nivel1.qmd)</span></span>
+<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚 **Recursos Adicionales**</span></span>
+<span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-284"><a href="#cb4-284" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Comunidad**</span></span>
+<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>💬 Discord: Stark Industries Dev Community</span>
+<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>🐦 Twitter: #IronManEvolution</span>
+<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>📧 Soporte: tony@starkindustries.dev</span>
+<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Referencias**</span></span>
+<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Gentle AI Stack</span><span class="co">](https://github.com/Gentleman-Programming/gentle-ai)</span></span>
+<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Gentleman Skills</span><span class="co">](https://github.com/Gentleman-Programming/Gentleman-Skills)</span></span>
+<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Cómo ser Tony Stark con IA</span><span class="co">](https://www.youtube.com/watch?v=SOxuW5K2FFY)</span></span>
+<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Especificación MCP</span><span class="co">](https://modelcontextprotocol.io)</span></span>
+<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Spec-Driven Development</span><span class="co">](https://spec-driven.dev)</span></span>
+<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 **Acerca del Autor**</span></span>
+<span id="cb4-299"><a href="#cb4-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-300"><a href="#cb4-300" aria-hidden="true" tabindex="-1"></a>**Diego Saavedra García**</span>
+<span id="cb4-301"><a href="#cb4-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-302"><a href="#cb4-302" aria-hidden="true" tabindex="-1"></a>Profesor universitario (ESPE, UIDE, Abacom, Codings Academy) con experiencia en:</span>
+<span id="cb4-303"><a href="#cb4-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-304"><a href="#cb4-304" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Desarrollo FullStack</span>
+<span id="cb4-305"><a href="#cb4-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-306"><a href="#cb4-306" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Ethical Hacking y Seguridad Ofensiva</span>
+<span id="cb4-307"><a href="#cb4-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-308"><a href="#cb4-308" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Inteligencia Artificial aplicada</span>
+<span id="cb4-309"><a href="#cb4-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-310"><a href="#cb4-310" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Arquitectura de Software</span>
+<span id="cb4-311"><a href="#cb4-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-312"><a href="#cb4-312" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"No enseño tecnología. Enseño a pensar como un ingeniero que usa IA para amplificar su intelecto."*</span></span>
+<span id="cb4-313"><a href="#cb4-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-314"><a href="#cb4-314" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-315"><a href="#cb4-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-316"><a href="#cb4-316" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎯 **Objetivo Final**</span></span>
+<span id="cb4-317"><a href="#cb4-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-318"><a href="#cb4-318" aria-hidden="true" tabindex="-1"></a>Al completar **Iron Man Evolution**, serás capaz de:</span>
+<span id="cb4-319"><a href="#cb4-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-320"><a href="#cb4-320" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>✅ **Diseñar** sistemas multi-agente desde cero</span>
+<span id="cb4-321"><a href="#cb4-321" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>✅ **Implementar** memoria persistente para IA</span>
+<span id="cb4-322"><a href="#cb4-322" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>✅ **Orquestar** múltiples agentes especializados</span>
+<span id="cb4-323"><a href="#cb4-323" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>✅ **Conectar** IA con herramientas externas vía MCP</span>
+<span id="cb4-324"><a href="#cb4-324" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>✅ **Aplicar** metodología SDD en proyectos reales</span>
+<span id="cb4-325"><a href="#cb4-325" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>✅ **Desplegar** sistemas de producción robustos</span>
+<span id="cb4-326"><a href="#cb4-326" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>✅ **Pensar** como Tony Stark: creativo, sistemático, innovador</span>
+<span id="cb4-327"><a href="#cb4-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-328"><a href="#cb4-328" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-329"><a href="#cb4-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-330"><a href="#cb4-330" aria-hidden="true" tabindex="-1"></a>**¿Estás listo para construir tu primera armadura?**  </span>
+<span id="cb4-331"><a href="#cb4-331" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">→ **Comienza el Nivel 1**</span><span class="co">](contenido/nivel1.qmd)</span></span>
+<span id="cb4-332"><a href="#cb4-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-333"><a href="#cb4-333" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-334"><a href="#cb4-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-335"><a href="#cb4-335" aria-hidden="true" tabindex="-1"></a>*"Un hombre puede hacer lo que otro hombre puede hacer. Si no puedes hacerlo, es porque no has aprendido cómo hacerlo todavía."*  </span>
+<span id="cb4-336"><a href="#cb4-336" aria-hidden="true" tabindex="-1"></a>— Howard Stark</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link active" href="./about.html" aria-current="page">
+<p>Acerca del Autor</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./license.html">
+<p>Licencia</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/Gentleman-Programming/gentle-ai">
+<p>Gentle AI Stack</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
